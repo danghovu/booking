@@ -215,8 +215,10 @@ func main() <span class="cov0" title="0">{
         done := make(chan struct{})
         go func() </span><span class="cov0" title="0">{
                 defer close(done)
-                server.Shutdown(context.Background())
-        }</span>()
+                if err := server.Shutdown(context.Background()); err != nil </span><span class="cov0" title="0">{
+                        log.Fatalf("Failed to shutdown server: %v", err)
+                }</span>
+        }()
 
         <span class="cov0" title="0">select </span>{
         case &lt;-done:<span class="cov0" title="0">
@@ -262,8 +264,10 @@ func main() <span class="cov0" title="0">{
         done := make(chan struct{})
         go func() </span><span class="cov0" title="0">{
                 defer close(done)
-                server.Shutdown(context.Background())
-        }</span>()
+                if err := server.Shutdown(context.Background()); err != nil </span><span class="cov0" title="0">{
+                        log.Fatalf("Failed to shutdown server: %v", err)
+                }</span>
+        }()
 
         <span class="cov0" title="0">select </span>{
         case &lt;-done:<span class="cov0" title="0">
@@ -409,8 +413,10 @@ func (s *Server) Run() error <span class="cov0" title="0">{
 
 func (s *Server) Shutdown(ctx context.Context) error <span class="cov0" title="0">{
         if s.server != nil </span><span class="cov0" title="0">{
-                s.server.Shutdown(ctx)
-        }</span>
+                if err := s.server.Shutdown(ctx); err != nil &amp;&amp; err != http.ErrServerClosed </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+        }
 
         <span class="cov0" title="0">if err := s.appContext.InfraRegistry().DB().Close(); err != nil </span><span class="cov0" title="0">{
                 return err
@@ -494,8 +500,10 @@ func (s *Server) Run() error <span class="cov0" title="0">{
 
 func (s *Server) Shutdown(ctx context.Context) error <span class="cov0" title="0">{
         if s.server != nil </span><span class="cov0" title="0">{
-                s.server.Shutdown(ctx)
-        }</span>
+                if err := s.server.Shutdown(ctx); err != nil &amp;&amp; err != http.ErrServerClosed </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+        }
 
         <span class="cov0" title="0">if err := s.appContext.InfraRegistry().DB().Close(); err != nil </span><span class="cov0" title="0">{
                 return err
@@ -604,7 +612,6 @@ import (
         "context"
         "log"
 
-        "github.com/IBM/sarama"
         "github.com/jmoiron/sqlx"
 
         "booking-event/config"
@@ -628,7 +635,6 @@ type InfraRegistry interface {
 type infraRegistry struct {
         db                     *sqlx.DB
         redis                  redis.Redis
-        kafkaSyncProducer      sarama.SyncProducer
         emailService           emailsender.EmailService
         paymentGateway         paymentgateway.PaymentGateway
         asyncTaskEnqueueClient asynq.AsyncTaskEnqueueClient
@@ -1870,8 +1876,7 @@ func (c *BookingRepository) CreateBooking(ctx context.Context, booking *model.Bo
                 RETURNING id
         `, entityBooking.UserID, entityBooking.EventID, entityBooking.Status, entityBooking.InitialQuantity, entityBooking.Quantity).Scan(&amp;booking.ID)
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return err
+                return tx.Rollback()
         }</span>
 
         <span class="cov0" title="0">for i := range bookingItems </span><span class="cov0" title="0">{
@@ -1880,8 +1885,7 @@ func (c *BookingRepository) CreateBooking(ctx context.Context, booking *model.Bo
 
         <span class="cov0" title="0">err = c.bookingItemRepo.CreateBookingItemsTx(ctx, tx, bookingItems)
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return err
+                return tx.Rollback()
         }</span>
 
         <span class="cov0" title="0">return tx.Commit()</span>
@@ -1911,8 +1915,7 @@ func (c *BookingRepository) ConfirmBooking(ctx context.Context, booking *model.B
 
         <span class="cov0" title="0">_, err = tx.ExecContext(ctx, "UPDATE bookings SET status = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2", string(model.BookingStatusConfirmed), booking.ID)
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return err
+                return tx.Rollback()
         }</span>
 
         <span class="cov0" title="0">tokens := make([]model.ConfirmingToken, len(bookingItems))
@@ -1922,8 +1925,7 @@ func (c *BookingRepository) ConfirmBooking(ctx context.Context, booking *model.B
 
         <span class="cov0" title="0">err = c.tokenRepo.ConfirmUsedTokensByTx(ctx, tx, tokens)
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return err
+                return tx.Rollback()
         }</span>
 
         <span class="cov0" title="0">amount := money.New(event.Price, event.Currency)
@@ -1935,8 +1937,7 @@ func (c *BookingRepository) ConfirmBooking(ctx context.Context, booking *model.B
 
         err = c.paymentClient.CreatePayment(ctx, payment)
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return err
+                return tx.Rollback()
         }</span>
 
         // _ = c.asynqClient.Enqueue(ctx, asynq.NewTask(string(model.TaskTypeSendConfirmationEmail), []byte("{}")))
@@ -1965,8 +1966,7 @@ func (c *BookingRepository) CancelBooking(ctx context.Context, bookingID int) er
                 "status": string(model.BookingStatusCanceled),
         })
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return err
+                return tx.Rollback()
         }</span>
 
         <span class="cov0" title="0">bookingItemsTokens := make([]string, len(bookingItems))
@@ -1976,8 +1976,7 @@ func (c *BookingRepository) CancelBooking(ctx context.Context, bookingID int) er
 
         <span class="cov0" title="0">err = c.tokenRepo.ReleaseTokensByTx(ctx, tx, bookingItemsTokens)
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return err
+                return tx.Rollback()
         }</span>
 
         <span class="cov0" title="0">err = tx.Commit()
@@ -2033,8 +2032,7 @@ func (r *EventRepository) CreateEvent(ctx context.Context, event model.Event, to
                 entityEvent.CreatorID,
                 entityEvent.Status).Scan(&amp;entityEvent.ID)
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return err
+                return tx.Rollback()
         }</span>
 
         <span class="cov0" title="0">for i := range tokens </span><span class="cov0" title="0">{
@@ -2042,8 +2040,7 @@ func (r *EventRepository) CreateEvent(ctx context.Context, event model.Event, to
         }</span>
         <span class="cov0" title="0">err = r.tokenRepo.CreateTokensTX(ctx, tx, tokens)
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return err
+                return tx.Rollback()
         }</span>
         <span class="cov0" title="0">return tx.Commit()</span>
 }
@@ -2189,10 +2186,6 @@ type TokenRepository struct {
         config TokenConfig
 }
 
-const (
-        tokenKey = "event:token:%d"
-)
-
 func NewTokenRepository(
         db *sqlx.DB,
         config TokenConfig,
@@ -2286,17 +2279,21 @@ func (r *TokenRepository) SelectAvailableToken(ctx context.Context, holderID int
 
         <span class="cov0" title="0">rows, err := tx.QueryxContext(ctx, "SELECT token FROM event_tokens WHERE event_id = $1 AND status = $2 AND (locked_until IS NULL OR (locked_until IS NOT NULL AND locked_until &lt; CURRENT_TIMESTAMP)) LIMIT $3 FOR UPDATE SKIP LOCKED", eventID, string(model.TokenStatusActive), quantity)
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return nil, err
-        }</span>
+                if err := tx.Rollback(); err != nil </span><span class="cov0" title="0">{
+                        return nil, err
+                }</span>
+                <span class="cov0" title="0">return nil, err</span>
+        }
         <span class="cov0" title="0">defer rows.Close()
         for rows.Next() </span><span class="cov0" title="0">{
                 var token string
                 err := rows.Scan(&amp;token)
                 if err != nil </span><span class="cov0" title="0">{
-                        tx.Rollback()
-                        return nil, err
-                }</span>
+                        if err := tx.Rollback(); err != nil </span><span class="cov0" title="0">{
+                                return nil, err
+                        }</span>
+                        <span class="cov0" title="0">return nil, err</span>
+                }
                 <span class="cov0" title="0">tokens = append(tokens, token)</span>
         }
 
@@ -2307,9 +2304,11 @@ func (r *TokenRepository) SelectAvailableToken(ctx context.Context, holderID int
                 "holder_id":    holderID,
         })
         if err != nil </span><span class="cov0" title="0">{
-                tx.Rollback()
-                return nil, err
-        }</span>
+                if err := tx.Rollback(); err != nil </span><span class="cov0" title="0">{
+                        return nil, err
+                }</span>
+                <span class="cov0" title="0">return nil, err</span>
+        }
 
         <span class="cov0" title="0">err = tx.Commit()
         if err != nil </span><span class="cov0" title="0">{
@@ -2745,7 +2744,6 @@ import (
 )
 
 type EmailService struct {
-        eventRepo   EventRepository
         bookingRepo BookingRepository
         emailClient BookingEmailRepository
 }
