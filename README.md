@@ -15,6 +15,9 @@ The project consists of three main services:
 2. Background Tasks
 3. Central Authentication
 
+## Architecture Design
+Refer to [Design Document](./misc/HighLevel_Architecture_Documentation_for_the_Event_Booking_System.pdf)
+
 ## Setup Instructions
 
 1. Clone the repository:
