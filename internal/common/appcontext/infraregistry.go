@@ -4,7 +4,6 @@ import (
 	"context"
 	"log"
 
-	"github.com/IBM/sarama"
 	"github.com/jmoiron/sqlx"
 
 	"booking-event/config"
@@ -28,7 +27,6 @@ type InfraRegistry interface {
 type infraRegistry struct {
 	db                     *sqlx.DB
 	redis                  redis.Redis
-	kafkaSyncProducer      sarama.SyncProducer
 	emailService           emailsender.EmailService
 	paymentGateway         paymentgateway.PaymentGateway
 	asyncTaskEnqueueClient asynq.AsyncTaskEnqueueClient

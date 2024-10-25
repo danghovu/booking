@@ -19,8 +19,8 @@ The project consists of three main services:
 
 1. Clone the repository:
    ```
-   git clone <repository-url>
-   cd <project-directory>
+   git clone git@github.com:danghovu/booking.git
+   cd booking-event
    ```
 
 2. Build and start the services using Docker Compose:
@@ -80,7 +80,7 @@ If you prefer to run services individually without Docker, you can use the follo
 
 ## Configuration
 
-The application uses configuration files located in the `config` directory. Ensure these are properly set up before running the services.
+The application uses configuration file `config.yaml` located in the `config` directory. Ensure these are properly set up before running the services.
 
 ## Migrations
 
