@@ -1,0 +1,3729 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>background-tasks: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">booking-event/cmd/background-tasks/main.go (0.0%)</option>
+				
+				<option value="file1">booking-event/cmd/central-auth/main.go (0.0%)</option>
+				
+				<option value="file2">booking-event/cmd/servers/main.go (0.0%)</option>
+				
+				<option value="file3">booking-event/config/config.go (0.0%)</option>
+				
+				<option value="file4">booking-event/internal/app/auth/server.go (0.0%)</option>
+				
+				<option value="file5">booking-event/internal/app/server/server.go (0.0%)</option>
+				
+				<option value="file6">booking-event/internal/app/worker/server.go (0.0%)</option>
+				
+				<option value="file7">booking-event/internal/common/appcontext/appcontext.go (0.0%)</option>
+				
+				<option value="file8">booking-event/internal/common/appcontext/infraregistry.go (0.0%)</option>
+				
+				<option value="file9">booking-event/internal/common/appcontext/repositoryregistry.go (0.0%)</option>
+				
+				<option value="file10">booking-event/internal/common/appcontext/serviceregistry.go (0.0%)</option>
+				
+				<option value="file11">booking-event/internal/common/util/ctx.go (100.0%)</option>
+				
+				<option value="file12">booking-event/internal/common/util/money.go (0.0%)</option>
+				
+				<option value="file13">booking-event/internal/common/util/util.go (0.0%)</option>
+				
+				<option value="file14">booking-event/internal/infra/asynq/asynq.go (0.0%)</option>
+				
+				<option value="file15">booking-event/internal/infra/asynq/enqueueclient.go (0.0%)</option>
+				
+				<option value="file16">booking-event/internal/infra/emailsender/noop.go (0.0%)</option>
+				
+				<option value="file17">booking-event/internal/infra/paymentgateway/noop.go (0.0%)</option>
+				
+				<option value="file18">booking-event/internal/infra/posgresql/postgresql.go (0.0%)</option>
+				
+				<option value="file19">booking-event/internal/infra/redis/redis.go (0.0%)</option>
+				
+				<option value="file20">booking-event/internal/infra/redis/standalone.go (0.0%)</option>
+				
+				<option value="file21">booking-event/internal/middleware/authmiddleware.go (0.0%)</option>
+				
+				<option value="file22">booking-event/internal/modules/auth/repository/entity/convert.go (0.0%)</option>
+				
+				<option value="file23">booking-event/internal/modules/auth/repository/store/repository.go (0.0%)</option>
+				
+				<option value="file24">booking-event/internal/modules/auth/services/auth.go (86.0%)</option>
+				
+				<option value="file25">booking-event/internal/modules/auth/services/auth_mock.go (100.0%)</option>
+				
+				<option value="file26">booking-event/internal/modules/auth/transport/http/auth.go (0.0%)</option>
+				
+				<option value="file27">booking-event/internal/modules/booking/repository/client/email/email.go (0.0%)</option>
+				
+				<option value="file28">booking-event/internal/modules/booking/repository/client/paymentgateway/client.go (0.0%)</option>
+				
+				<option value="file29">booking-event/internal/modules/booking/repository/entity/convert.go (0.0%)</option>
+				
+				<option value="file30">booking-event/internal/modules/booking/repository/store/booking.go (0.0%)</option>
+				
+				<option value="file31">booking-event/internal/modules/booking/repository/store/event.go (0.0%)</option>
+				
+				<option value="file32">booking-event/internal/modules/booking/repository/store/item.go (0.0%)</option>
+				
+				<option value="file33">booking-event/internal/modules/booking/repository/store/token.go (0.0%)</option>
+				
+				<option value="file34">booking-event/internal/modules/booking/services/bookingservice.go (75.9%)</option>
+				
+				<option value="file35">booking-event/internal/modules/booking/services/bookingservice_mock.go (92.0%)</option>
+				
+				<option value="file36">booking-event/internal/modules/booking/services/email.go (0.0%)</option>
+				
+				<option value="file37">booking-event/internal/modules/booking/services/eventservice.go (0.0%)</option>
+				
+				<option value="file38">booking-event/internal/modules/booking/services/eventservice_mock.go (0.0%)</option>
+				
+				<option value="file39">booking-event/internal/modules/booking/services/tokenservice.go (100.0%)</option>
+				
+				<option value="file40">booking-event/internal/modules/booking/services/tokenservice_mock.go (80.0%)</option>
+				
+				<option value="file41">booking-event/internal/modules/booking/transport/asyntask/email.go (0.0%)</option>
+				
+				<option value="file42">booking-event/internal/modules/booking/transport/http/booking.go (90.9%)</option>
+				
+				<option value="file43">booking-event/internal/modules/booking/transport/http/booking_mock.go (100.0%)</option>
+				
+				<option value="file44">booking-event/internal/modules/booking/transport/http/event.go (77.8%)</option>
+				
+				<option value="file45">booking-event/internal/modules/booking/transport/http/event_mock.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package main
+
+import (
+        "log"
+
+        "booking-event/config"
+        "booking-event/internal/app/worker"
+)
+
+func main() <span class="cov0" title="0">{
+        config, err := config.NewConfig()
+        if err != nil </span><span class="cov0" title="0">{
+                log.Fatalf("Failed to load config: %v", err)
+        }</span>
+        <span class="cov0" title="0">server := worker.NewServer(*config)
+        if err := server.Run(); err != nil </span><span class="cov0" title="0">{
+                log.Fatalf("Failed to run server: %v", err)
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package main
+
+import (
+        "context"
+        "log"
+        "os"
+        "os/signal"
+        "syscall"
+
+        "booking-event/config"
+        "booking-event/internal/app/auth"
+)
+
+func main() <span class="cov0" title="0">{
+        config, err := config.NewConfig()
+        if err != nil </span><span class="cov0" title="0">{
+                log.Fatalf("Failed to load config: %v", err)
+        }</span>
+        <span class="cov0" title="0">server := auth.NewServer(*config)
+        go func() </span><span class="cov0" title="0">{
+                if err := server.Run(); err != nil </span><span class="cov0" title="0">{
+                        log.Fatalf("Failed to run server: %v", err)
+                }</span>
+        }()
+
+        <span class="cov0" title="0">quit := make(chan os.Signal, 1)
+        signal.Notify(quit, os.Interrupt, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
+        &lt;-quit
+        log.Println("Shutdown Server ...")
+        ctx, cancel := context.WithTimeout(context.Background(), config.GracefulShutdown)
+        defer cancel()
+
+        done := make(chan struct{})
+        go func() </span><span class="cov0" title="0">{
+                defer close(done)
+                server.Shutdown(context.Background())
+        }</span>()
+
+        <span class="cov0" title="0">select </span>{
+        case &lt;-done:<span class="cov0" title="0">
+                log.Println("Server shutdown gracefully")</span>
+        case &lt;-ctx.Done():<span class="cov0" title="0">
+                log.Fatalf("Server shutdown timed out")</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package main
+
+import (
+        "context"
+        "log"
+        "os"
+        "os/signal"
+        "syscall"
+
+        "booking-event/config"
+        "booking-event/internal/app/server"
+)
+
+func main() <span class="cov0" title="0">{
+        config, err := config.NewConfig()
+        if err != nil </span><span class="cov0" title="0">{
+                log.Fatalf("Failed to load config: %v", err)
+        }</span>
+        <span class="cov0" title="0">server := server.NewServer(*config)
+        go func() </span><span class="cov0" title="0">{
+                if err := server.Run(); err != nil </span><span class="cov0" title="0">{
+                        log.Fatalf("Failed to run server: %v", err)
+                }</span>
+        }()
+
+        <span class="cov0" title="0">quit := make(chan os.Signal, 1)
+        signal.Notify(quit, os.Interrupt, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
+        &lt;-quit
+        log.Println("Shutdown Server ...")
+        ctx, cancel := context.WithTimeout(context.Background(), config.GracefulShutdown)
+        defer cancel()
+
+        done := make(chan struct{})
+        go func() </span><span class="cov0" title="0">{
+                defer close(done)
+                server.Shutdown(context.Background())
+        }</span>()
+
+        <span class="cov0" title="0">select </span>{
+        case &lt;-done:<span class="cov0" title="0">
+                log.Println("Server shutdown gracefully")</span>
+        case &lt;-ctx.Done():<span class="cov0" title="0">
+                log.Fatalf("Server shutdown timed out")</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package config
+
+import (
+        "fmt"
+        "log"
+        "time"
+
+        "github.com/spf13/viper"
+)
+
+type Config struct {
+        Server struct {
+                Port string `mapstructure:"port"`
+        } `mapstructure:"server"`
+        Postgres struct {
+                Host     string `mapstructure:"host"`
+                Port     int    `mapstructure:"port"`
+                User     string `mapstructure:"user"`
+                Password string `mapstructure:"password"`
+                DbName   string `mapstructure:"db_name"`
+                SSLMode  string `mapstructure:"ssl_mode"`
+                OpenConn int    `mapstructure:"open_conn"`
+                IdleConn int    `mapstructure:"idle_conn"`
+        } `mapstructure:"postgres"`
+        Redis struct {
+                Host     string `mapstructure:"host"`
+                Port     int    `mapstructure:"port"`
+                Password string `mapstructure:"password"`
+                Prefix   string `mapstructure:"prefix"`
+        } `mapstructure:"redis"`
+        Booking struct {
+                MaxBookingPerUser int `mapstructure:"max_booking_per_user"`
+        } `mapstructure:"booking"`
+        Token struct {
+                LockedDuration time.Duration `mapstructure:"locked_duration"`
+        } `mapstructure:"token"`
+        JWT struct {
+                SecretKey       string        `mapstructure:"secret_key"`
+                AccessTokenExp  time.Duration `mapstructure:"access_token_exp"`
+                RefreshTokenExp time.Duration `mapstructure:"refresh_token_exp"`
+        } `mapstructure:"jwt"`
+        SupportingMoney struct {
+                Currency string `mapstructure:"currency"`
+        } `mapstructure:"supporting_money"`
+        GracefulShutdown time.Duration `mapstructure:"graceful_shutdown"`
+        Asynq            struct {
+                Concurrency int            `mapstructure:"concurrency"`
+                Queues      map[string]int `mapstructure:"queues"`
+        } `mapstructure:"asynq"`
+}
+
+func NewConfig() (*Config, error) <span class="cov0" title="0">{
+        v := viper.New()
+
+        v.SetConfigName("config")
+        v.AddConfigPath(".")
+        v.AddConfigPath("./config")
+
+        if err := v.ReadInConfig(); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("error reading config file: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">v.AutomaticEnv()
+        var c Config
+        if err := v.Unmarshal(&amp;c); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("unable to decode into struct: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">log.Printf("config: %+v", c)
+
+        return &amp;c, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package auth
+
+import (
+        "context"
+        "fmt"
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        _migrations "github.com/golang-migrate/migrate/v4"
+
+        "booking-event/config"
+        "booking-event/internal/common/appcontext"
+        authhttphandler "booking-event/internal/modules/auth/transport/http"
+        "booking-event/migrations"
+)
+
+type Server struct {
+        appContext appcontext.AppContext
+        router     *gin.Engine
+        config     config.Config
+        server     *http.Server
+}
+
+func NewServer(config config.Config) *Server <span class="cov0" title="0">{
+        appContext := appcontext.NewAppContext(config)
+        return &amp;Server{config: config, router: gin.New(), appContext: appContext}
+}</span>
+
+func (s *Server) RegisterMiddlewares() <span class="cov0" title="0">{
+        s.router.Use(gin.Recovery())
+}</span>
+
+func (s *Server) HealthCheck(c *gin.Context) <span class="cov0" title="0">{
+        c.JSON(http.StatusOK, gin.H{"message": "OK"})
+}</span>
+
+func (s *Server) RegisterRoutes() <span class="cov0" title="0">{
+        s.router.GET("/health", s.HealthCheck)
+
+        userRoutes := s.router.Group("/api/v1")
+        authHttpHandler := authhttphandler.NewAuthHandler(s.appContext.ServiceRegistry().AuthService())
+        authHttpHandler.RegisterRoutes(userRoutes)
+}</span>
+
+func (s *Server) Run() error <span class="cov0" title="0">{
+        if err := migrations.RunMigrations(s.appContext.InfraRegistry().DBUrl()); err != nil &amp;&amp; err != _migrations.ErrNoChange </span><span class="cov0" title="0">{
+                fmt.Println("Failed to run migrations:", err)
+        }</span>
+        <span class="cov0" title="0">s.RegisterMiddlewares()
+        s.RegisterRoutes()
+
+        s.server = &amp;http.Server{
+                Addr:    fmt.Sprintf(":%s", s.config.Server.Port),
+                Handler: s.router,
+        }
+
+        return s.server.ListenAndServe()</span>
+}
+
+func (s *Server) Shutdown(ctx context.Context) error <span class="cov0" title="0">{
+        if s.server != nil </span><span class="cov0" title="0">{
+                s.server.Shutdown(ctx)
+        }</span>
+
+        <span class="cov0" title="0">if err := s.appContext.InfraRegistry().DB().Close(); err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">if err := s.appContext.InfraRegistry().Redis().Close(); err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file5" style="display: none">package server
+
+import (
+        "context"
+        "fmt"
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+        _migrations "github.com/golang-migrate/migrate/v4"
+
+        "booking-event/config"
+        "booking-event/internal/common/appcontext"
+        "booking-event/internal/middleware"
+        bookinghttphandler "booking-event/internal/modules/booking/transport/http"
+        "booking-event/migrations"
+)
+
+type Server struct {
+        appContext appcontext.AppContext
+        router     *gin.Engine
+        config     config.Config
+        server     *http.Server
+}
+
+func NewServer(config config.Config) *Server <span class="cov0" title="0">{
+        appContext := appcontext.NewAppContext(config)
+        return &amp;Server{config: config, router: gin.New(), appContext: appContext}
+}</span>
+
+func (s *Server) RegisterMiddlewares() <span class="cov0" title="0">{
+        s.router.Use(gin.Recovery())
+        s.router.Use(middleware.AuthMiddleware(s.appContext.ServiceRegistry().AuthService()))
+}</span>
+
+func (s *Server) HealthCheck(c *gin.Context) <span class="cov0" title="0">{
+        c.JSON(http.StatusOK, gin.H{"message": "OK"})
+}</span>
+
+func (s *Server) RegisterRoutes() <span class="cov0" title="0">{
+        s.router.GET("/health", s.HealthCheck)
+
+        adminRoutes := s.router.Group("/admin")
+        adminRoutes.Use(middleware.AdminAuthMiddleware(s.appContext.ServiceRegistry().AuthService()))
+
+        userRoutes := s.router.Group("/api/v1")
+        userRoutes.Use(middleware.AuthMiddleware(s.appContext.ServiceRegistry().AuthService()))
+        bookingHttpHandler := bookinghttphandler.NewBookingHandler(s.appContext.ServiceRegistry().BookingService())
+        bookingHttpHandler.RegisterRoutes(userRoutes)
+
+        eventHttpHandler := bookinghttphandler.NewEventHandler(s.appContext.ServiceRegistry().EventService())
+        eventHttpHandler.RegisterRoutes(userRoutes)
+}</span>
+
+func (s *Server) Run() error <span class="cov0" title="0">{
+        if err := migrations.RunMigrations(s.appContext.InfraRegistry().DBUrl()); err != nil &amp;&amp; err != _migrations.ErrNoChange </span><span class="cov0" title="0">{
+                fmt.Println("Failed to run migrations:", err)
+        }</span>
+        <span class="cov0" title="0">s.RegisterMiddlewares()
+        s.RegisterRoutes()
+
+        s.server = &amp;http.Server{
+                Addr:    fmt.Sprintf(":%s", s.config.Server.Port),
+                Handler: s.router,
+        }
+
+        return s.server.ListenAndServe()</span>
+}
+
+func (s *Server) Shutdown(ctx context.Context) error <span class="cov0" title="0">{
+        if s.server != nil </span><span class="cov0" title="0">{
+                s.server.Shutdown(ctx)
+        }</span>
+
+        <span class="cov0" title="0">if err := s.appContext.InfraRegistry().DB().Close(); err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">if err := s.appContext.InfraRegistry().Redis().Close(); err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package worker
+
+import (
+        "context"
+
+        "booking-event/config"
+        "booking-event/internal/common/appcontext"
+        "booking-event/internal/infra/asynq"
+        "booking-event/internal/infra/redis"
+        "booking-event/internal/modules/booking/transport/asyntask"
+)
+
+type Server struct {
+        appContext    appcontext.AppContext
+        config        config.Config
+        asynqServer   *asynq.AsynqServer
+        asynqHandlers *asyntask.EmailTaskHandler
+}
+
+func NewServer(config config.Config) *Server <span class="cov0" title="0">{
+        appContext := appcontext.NewAppContext(config)
+        redisConfig := redis.Config{
+                Host:     config.Redis.Host,
+                Port:     config.Redis.Port,
+                Password: config.Redis.Password,
+                Prefix:   config.Redis.Prefix,
+        }
+        asynqServer := asynq.NewAsynqServer(asynq.Config{
+                Addr:        redisConfig.Addr(),
+                Concurrency: config.Asynq.Concurrency,
+                Queues:      config.Asynq.Queues,
+        })
+        return &amp;Server{config: config, appContext: appContext, asynqServer: asynqServer}
+}</span>
+
+func (s *Server) RegisterHandlers() <span class="cov0" title="0">{
+        handlers := asyntask.NewEmailTaskHandler(s.appContext.ServiceRegistry().EmailService())
+        handlers.Register(s.asynqServer.ServeMux())
+        s.asynqHandlers = handlers
+}</span>
+
+func (s *Server) Run() error <span class="cov0" title="0">{
+        s.RegisterHandlers()
+        return s.asynqServer.Start(context.Background())
+}</span>
+</pre>
+		
+		<pre class="file" id="file7" style="display: none">package appcontext
+
+import "booking-event/config"
+
+type AppContext interface {
+        InfraRegistry() InfraRegistry
+        RepositoryRegistry() RepositoryRegistry
+        ServiceRegistry() ServiceRegistry
+}
+
+type appContext struct {
+        infraRegistry      InfraRegistry
+        repositoryRegistry RepositoryRegistry
+        serviceRegistry    ServiceRegistry
+}
+
+func NewAppContext(
+        config config.Config,
+) AppContext <span class="cov0" title="0">{
+        infraRegistry := NewInfraRegistry(config)
+        repositoryRegistry := NewRepositoryRegistry(config, infraRegistry)
+        serviceRegistry := NewServiceRegistry(config, infraRegistry, repositoryRegistry)
+        return &amp;appContext{
+                infraRegistry:      infraRegistry,
+                repositoryRegistry: repositoryRegistry,
+                serviceRegistry:    serviceRegistry,
+        }
+}</span>
+
+func (a *appContext) InfraRegistry() InfraRegistry <span class="cov0" title="0">{
+        return a.infraRegistry
+}</span>
+
+func (a *appContext) RepositoryRegistry() RepositoryRegistry <span class="cov0" title="0">{
+        return a.repositoryRegistry
+}</span>
+
+func (a *appContext) ServiceRegistry() ServiceRegistry <span class="cov0" title="0">{
+        return a.serviceRegistry
+}</span>
+</pre>
+		
+		<pre class="file" id="file8" style="display: none">package appcontext
+
+import (
+        "context"
+        "log"
+
+        "github.com/IBM/sarama"
+        "github.com/jmoiron/sqlx"
+
+        "booking-event/config"
+        "booking-event/internal/infra/asynq"
+        "booking-event/internal/infra/emailsender"
+        "booking-event/internal/infra/paymentgateway"
+        postgresql "booking-event/internal/infra/posgresql"
+        "booking-event/internal/infra/redis"
+)
+
+type InfraRegistry interface {
+        DB() *sqlx.DB
+        DBUrl() string
+        Redis() redis.Redis
+
+        EmailService() emailsender.EmailService
+        PaymentService() paymentgateway.PaymentGateway
+        AsyncTaskEnqueueClient() asynq.AsyncTaskEnqueueClient
+}
+
+type infraRegistry struct {
+        db                     *sqlx.DB
+        redis                  redis.Redis
+        kafkaSyncProducer      sarama.SyncProducer
+        emailService           emailsender.EmailService
+        paymentGateway         paymentgateway.PaymentGateway
+        asyncTaskEnqueueClient asynq.AsyncTaskEnqueueClient
+        dbUrl                  string
+}
+
+func NewInfraRegistry(config config.Config) InfraRegistry <span class="cov0" title="0">{
+        dbConfig := postgresql.Config{
+                Host:     config.Postgres.Host,
+                Port:     config.Postgres.Port,
+                User:     config.Postgres.User,
+                Password: config.Postgres.Password,
+                DBName:   config.Postgres.DbName,
+                SSLMode:  config.Postgres.SSLMode,
+                IdleConn: config.Postgres.IdleConn,
+                MaxOpen:  config.Postgres.OpenConn,
+        }
+
+        db := postgresql.NewClient(dbConfig)
+
+        if err := db.Ping(); err != nil </span><span class="cov0" title="0">{
+                log.Fatalf("Failed to connect to database: %v", err)
+        }</span>
+
+        <span class="cov0" title="0">redisConfig := redis.Config{
+                Host:     config.Redis.Host,
+                Port:     config.Redis.Port,
+                Password: config.Redis.Password,
+                Prefix:   config.Redis.Prefix,
+        }
+
+        redis := redis.NewClient(redisConfig)
+
+        if _, err := redis.Ping(context.Background()); err != nil </span><span class="cov0" title="0">{
+                log.Fatalf("Failed to connect to redis: %v", err)
+        }</span>
+
+        <span class="cov0" title="0">emailService := emailsender.NewNoopEmailService()
+
+        paymentGateway := paymentgateway.NewNoopPaymentGateway()
+
+        return &amp;infraRegistry{
+                db:                     db,
+                redis:                  redis,
+                emailService:           emailService,
+                paymentGateway:         paymentGateway,
+                asyncTaskEnqueueClient: asynq.NewEnqueueClient(asynq.Config{Addr: redisConfig.Addr()}),
+                dbUrl:                  dbConfig.URL(),
+        }</span>
+}
+
+func (r *infraRegistry) DB() *sqlx.DB <span class="cov0" title="0">{
+        return r.db
+}</span>
+
+func (r *infraRegistry) Redis() redis.Redis <span class="cov0" title="0">{
+        return r.redis
+}</span>
+func (r *infraRegistry) EmailService() emailsender.EmailService <span class="cov0" title="0">{
+        return r.emailService
+}</span>
+
+func (r *infraRegistry) PaymentService() paymentgateway.PaymentGateway <span class="cov0" title="0">{
+        return r.paymentGateway
+}</span>
+
+func (r *infraRegistry) DBUrl() string <span class="cov0" title="0">{
+        return r.dbUrl
+}</span>
+
+func (r *infraRegistry) AsyncTaskEnqueueClient() asynq.AsyncTaskEnqueueClient <span class="cov0" title="0">{
+        return r.asyncTaskEnqueueClient
+}</span>
+</pre>
+		
+		<pre class="file" id="file9" style="display: none">package appcontext
+
+import (
+        "booking-event/config"
+        authRepo "booking-event/internal/modules/auth/repository/store"
+        emailRepo "booking-event/internal/modules/booking/repository/client/email"
+        bookingRepo "booking-event/internal/modules/booking/repository/store"
+)
+
+type RepositoryRegistry interface {
+        EventRepository() *bookingRepo.EventRepository
+        UserRepository() *authRepo.UserRepository
+        BookingRepository() *bookingRepo.BookingRepository
+        BookingEventTokenRepository() *bookingRepo.TokenRepository
+        BookingItemRepository() *bookingRepo.BookingItemRepository
+        BookingEmailRepository() *emailRepo.EmailClient
+}
+
+type repositoryRegistry struct {
+        eventRepository             *bookingRepo.EventRepository
+        userRepository              *authRepo.UserRepository
+        bookingRepository           *bookingRepo.BookingRepository
+        bookingEventTokenRepository *bookingRepo.TokenRepository
+        bookingItemRepository       *bookingRepo.BookingItemRepository
+        bookingEmailRepository      *emailRepo.EmailClient
+}
+
+func NewRepositoryRegistry(
+        config config.Config,
+        infraRegistry InfraRegistry,
+) RepositoryRegistry <span class="cov0" title="0">{
+        bookingTokenRepo := bookingRepo.NewTokenRepository(infraRegistry.DB(), bookingRepo.TokenConfig{LockedDuration: config.Token.LockedDuration})
+        return &amp;repositoryRegistry{
+                eventRepository: bookingRepo.NewEventRepository(
+                        infraRegistry.DB(),
+                        bookingTokenRepo,
+                ),
+                userRepository: authRepo.NewUserRepository(infraRegistry.DB()),
+                bookingRepository: bookingRepo.NewBookingRepository(
+                        infraRegistry.DB(),
+                        infraRegistry.PaymentService(),
+                        bookingRepo.NewBookingItemRepository(infraRegistry.DB()),
+                        bookingTokenRepo,
+                        infraRegistry.AsyncTaskEnqueueClient(),
+                ),
+                bookingEventTokenRepository: bookingTokenRepo,
+                bookingItemRepository:       bookingRepo.NewBookingItemRepository(infraRegistry.DB()),
+                bookingEmailRepository:      emailRepo.NewEmailClient(infraRegistry.EmailService()),
+        }
+}</span>
+
+func (r *repositoryRegistry) EventRepository() *bookingRepo.EventRepository <span class="cov0" title="0">{
+        return r.eventRepository
+}</span>
+func (r *repositoryRegistry) UserRepository() *authRepo.UserRepository <span class="cov0" title="0">{
+        return r.userRepository
+}</span>
+
+func (r *repositoryRegistry) BookingRepository() *bookingRepo.BookingRepository <span class="cov0" title="0">{
+        return r.bookingRepository
+}</span>
+
+func (r *repositoryRegistry) BookingEventTokenRepository() *bookingRepo.TokenRepository <span class="cov0" title="0">{
+        return r.bookingEventTokenRepository
+}</span>
+
+func (r *repositoryRegistry) BookingItemRepository() *bookingRepo.BookingItemRepository <span class="cov0" title="0">{
+        return r.bookingItemRepository
+}</span>
+
+func (r *repositoryRegistry) BookingEmailRepository() *emailRepo.EmailClient <span class="cov0" title="0">{
+        return r.bookingEmailRepository
+}</span>
+</pre>
+		
+		<pre class="file" id="file10" style="display: none">package appcontext
+
+import (
+        "github.com/google/uuid"
+
+        "booking-event/config"
+        authServices "booking-event/internal/modules/auth/services"
+        bookingServices "booking-event/internal/modules/booking/services"
+)
+
+type ServiceRegistry interface {
+        EventService() *bookingServices.EventService
+        AuthService() *authServices.AuthService
+        BookingService() *bookingServices.BookingService
+        BookingEventTokenService() *bookingServices.EventTokenService
+        EmailService() *bookingServices.EmailService
+}
+
+type serviceRegistry struct {
+        eventService      *bookingServices.EventService
+        authService       *authServices.AuthService
+        bookingService    *bookingServices.BookingService
+        eventTokenService *bookingServices.EventTokenService
+        emailService      *bookingServices.EmailService
+}
+
+func NewServiceRegistry(
+        config config.Config,
+        infraRegistry InfraRegistry,
+        repositoryRegistry RepositoryRegistry,
+) ServiceRegistry <span class="cov0" title="0">{
+        bookingEventTokenService := bookingServices.NewEventTokenService(
+                repositoryRegistry.BookingEventTokenRepository(),
+                func() string </span><span class="cov0" title="0">{
+                        return uuid.New().String()
+                }</span>,
+        )
+        <span class="cov0" title="0">return &amp;serviceRegistry{
+                eventService: bookingServices.NewEventService(
+                        repositoryRegistry.EventRepository(),
+                        config.SupportingMoney.Currency,
+                        func() string </span><span class="cov0" title="0">{
+                                return uuid.New().String()
+                        }</span>,
+                ),
+                authService: authServices.NewAuthService(
+                        repositoryRegistry.UserRepository(),
+                        authServices.AuthServiceConfig{
+                                SecretKey:       config.JWT.SecretKey,
+                                AccessTokenExp:  config.JWT.AccessTokenExp,
+                                RefreshTokenExp: config.JWT.RefreshTokenExp,
+                        },
+                ),
+                bookingService: bookingServices.NewBookingService(
+                        repositoryRegistry.EventRepository(),
+                        repositoryRegistry.BookingEventTokenRepository(),
+                        repositoryRegistry.BookingRepository(),
+                        repositoryRegistry.BookingItemRepository(),
+                        infraRegistry.PaymentService(),
+                        bookingServices.BookingConfig{
+                                MaxBookingPerUser: config.Booking.MaxBookingPerUser,
+                        },
+                ),
+                eventTokenService: bookingEventTokenService,
+                emailService: bookingServices.NewEmailService(
+                        repositoryRegistry.BookingRepository(),
+                        repositoryRegistry.BookingEmailRepository(),
+                ),
+        }
+}
+
+func (s *serviceRegistry) EventService() *bookingServices.EventService <span class="cov0" title="0">{
+        return s.eventService
+}</span>
+
+func (s *serviceRegistry) AuthService() *authServices.AuthService <span class="cov0" title="0">{
+        return s.authService
+}</span>
+
+func (s *serviceRegistry) BookingService() *bookingServices.BookingService <span class="cov0" title="0">{
+        return s.bookingService
+}</span>
+
+func (s *serviceRegistry) BookingEventTokenService() *bookingServices.EventTokenService <span class="cov0" title="0">{
+        return s.eventTokenService
+}</span>
+
+func (s *serviceRegistry) EmailService() *bookingServices.EmailService <span class="cov0" title="0">{
+        return s.emailService
+}</span>
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package util
+
+import (
+        "context"
+)
+
+type UserContextKey struct{}
+
+func GetUserIDContext(ctx context.Context) int <span class="cov8" title="1">{
+        userID, ok := ctx.Value(UserContextKey{}).(int)
+        if !ok </span><span class="cov8" title="1">{
+                return 0
+        }</span>
+        <span class="cov8" title="1">return userID</span>
+}
+
+func SetUserIDContext(ctx context.Context, userID int) context.Context <span class="cov8" title="1">{
+        return context.WithValue(ctx, UserContextKey{}, userID)
+}</span>
+</pre>
+		
+		<pre class="file" id="file12" style="display: none">package util
+
+import "github.com/Rhymond/go-money"
+
+func ConvertToMoney(amount int, currency string) *money.Money <span class="cov0" title="0">{
+        return money.New(int64(amount), currency)
+}</span>
+</pre>
+		
+		<pre class="file" id="file13" style="display: none">package util
+
+func ToPtr[T any](v T) *T <span class="cov0" title="0">{
+        return &amp;v
+}</span>
+</pre>
+		
+		<pre class="file" id="file14" style="display: none">package asynq
+
+import (
+        "context"
+
+        "github.com/hibiken/asynq"
+)
+
+type Config struct {
+        Addr        string
+        Concurrency int
+        Queues      map[string]int
+}
+
+type AsynqServer struct {
+        server   *asynq.Server
+        handlers map[string]asynq.Handler
+        mux      *asynq.ServeMux
+}
+
+func NewAsynqServer(config Config) *AsynqServer <span class="cov0" title="0">{
+        queues := make(map[string]int)
+        for queue, concurrency := range config.Queues </span><span class="cov0" title="0">{
+                queues[queue] = concurrency
+        }</span>
+        <span class="cov0" title="0">if queues["default"] == 0 </span><span class="cov0" title="0">{
+                queues["default"] = 3
+        }</span>
+        <span class="cov0" title="0">mux := asynq.NewServeMux()
+        return &amp;AsynqServer{
+                server: asynq.NewServer(
+                        asynq.RedisClientOpt{Addr: config.Addr},
+                        asynq.Config{
+                                Concurrency: config.Concurrency,
+                                Queues:      config.Queues,
+                        },
+                ),
+                handlers: make(map[string]asynq.Handler),
+                mux:      mux,
+        }</span>
+}
+
+func (s *AsynqServer) ServeMux() *asynq.ServeMux <span class="cov0" title="0">{
+        return s.mux
+}</span>
+
+func (s *AsynqServer) RegisterHandler(taskName string, handler asynq.Handler) <span class="cov0" title="0">{
+        s.handlers[taskName] = handler
+}</span>
+
+func (s *AsynqServer) Start(ctx context.Context) error <span class="cov0" title="0">{
+        for taskName, handler := range s.handlers </span><span class="cov0" title="0">{
+                s.mux.HandleFunc(taskName, handler.ProcessTask)
+        }</span>
+        <span class="cov0" title="0">return s.server.Run(s.mux)</span>
+}
+</pre>
+		
+		<pre class="file" id="file15" style="display: none">package asynq
+
+import (
+        "context"
+
+        "github.com/hibiken/asynq"
+)
+
+type AsyncTaskEnqueueClient interface {
+        Enqueue(ctx context.Context, task *asynq.Task, opts ...asynq.Option) error
+}
+
+type enqueueClient struct {
+        client *asynq.Client
+}
+
+func NewEnqueueClient(config Config) AsyncTaskEnqueueClient <span class="cov0" title="0">{
+        return &amp;enqueueClient{
+                client: asynq.NewClient(asynq.RedisClientOpt{Addr: config.Addr}),
+        }
+}</span>
+
+func (c *enqueueClient) Enqueue(ctx context.Context, task *asynq.Task, opts ...asynq.Option) error <span class="cov0" title="0">{
+        _, err := c.client.EnqueueContext(ctx, task, opts...)
+        return err
+}</span>
+</pre>
+		
+		<pre class="file" id="file16" style="display: none">package emailsender
+
+import "context"
+
+type noopEmailService struct{}
+
+func NewNoopEmailService() EmailService <span class="cov0" title="0">{
+        return &amp;noopEmailService{}
+}</span>
+
+func (s *noopEmailService) SendEmail(ctx context.Context, email *Email) error <span class="cov0" title="0">{
+        // do nothing
+        return nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file17" style="display: none">package paymentgateway
+
+import (
+        "context"
+        "fmt"
+)
+
+type noopPaymentGateway struct{}
+
+func NewNoopPaymentGateway() PaymentGateway <span class="cov0" title="0">{
+        return &amp;noopPaymentGateway{}
+}</span>
+
+func (pg *noopPaymentGateway) CreatePayment(ctx context.Context, payment *Payment) error <span class="cov0" title="0">{
+        fmt.Println("create payment", payment)
+        return nil
+}</span>
+
+func (pg *noopPaymentGateway) GetPayment(ctx context.Context, paymentID string) (*Payment, error) <span class="cov0" title="0">{
+        return nil, nil
+}</span>
+
+func (pg *noopPaymentGateway) CreateRefund(ctx context.Context, refund *Refund) error <span class="cov0" title="0">{
+        return nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file18" style="display: none">package postgresql
+
+import (
+        "fmt"
+        "log"
+
+        "github.com/jmoiron/sqlx"
+        _ "github.com/lib/pq"
+)
+
+type Config struct {
+        Host     string
+        Port     int
+        User     string
+        Password string
+        DBName   string
+        SSLMode  string
+        IdleConn int
+        MaxOpen  int
+}
+
+func (cfg Config) DSN() string <span class="cov0" title="0">{
+        return fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=%s", cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.DBName, cfg.SSLMode)
+}</span>
+
+func (cfg Config) URL() string <span class="cov0" title="0">{
+        return fmt.Sprintf("postgres://%s:%s@%s:%d/%s?sslmode=%s", cfg.User, cfg.Password, cfg.Host, cfg.Port, cfg.DBName, cfg.SSLMode)
+}</span>
+
+func NewClient(cfg Config) *sqlx.DB <span class="cov0" title="0">{
+        db, err := sqlx.Open("postgres", cfg.DSN())
+        if err != nil </span><span class="cov0" title="0">{
+                log.Fatalf("failed to open database: %v", err)
+        }</span>
+        <span class="cov0" title="0">db.SetMaxIdleConns(cfg.IdleConn)
+        db.SetMaxOpenConns(cfg.MaxOpen)
+        return db</span>
+}
+</pre>
+		
+		<pre class="file" id="file19" style="display: none">package redis
+
+import (
+        "context"
+        "fmt"
+        "time"
+
+        "github.com/redis/go-redis/v9"
+)
+
+type Config struct {
+        Host     string
+        Port     int
+        Password string
+        DB       int
+        Prefix   string
+}
+
+func (cfg Config) Addr() string <span class="cov0" title="0">{
+        return fmt.Sprintf("%s:%d", cfg.Host, cfg.Port)
+}</span>
+
+func NewClient(cfg Config) Redis <span class="cov0" title="0">{
+        return &amp;standaloneRedis{
+                prefix: cfg.Prefix,
+                client: redis.NewClient(&amp;redis.Options{
+                        Addr:     cfg.Addr(),
+                        Password: cfg.Password,
+                        DB:       cfg.DB,
+                }),
+        }
+}</span>
+
+type Redis interface {
+        AppendPrefix(key string) string
+        AppendPrefixSlice(keys []string) []string
+        Get(ctx context.Context, key string) (string, error)
+        Set(ctx context.Context, key string, value interface{}, expiration time.Duration) (string, error)
+        Publish(ctx context.Context, channel string, message interface{}) (int64, error)
+        Subscribe(ctx context.Context, channels ...string) *redis.PubSub
+        Ping(ctx context.Context) (string, error)
+        RPop(ctx context.Context, key string) (string, error)
+        RPopCount(ctx context.Context, key string, count int) ([]string, error)
+        LPush(ctx context.Context, key string, values ...interface{}) (int64, error)
+        Pipeline() redis.Pipeliner
+
+        SAdd(ctx context.Context, key string, members ...interface{}) (int64, error)
+        SRem(ctx context.Context, key string, members ...interface{}) (int64, error)
+        SPopN(ctx context.Context, key string, count int64) ([]string, error)
+        Close() error
+}
+</pre>
+		
+		<pre class="file" id="file20" style="display: none">package redis
+
+import (
+        "context"
+        "fmt"
+        "time"
+
+        "github.com/redis/go-redis/v9"
+)
+
+type standaloneRedis struct {
+        client *redis.Client
+        prefix string
+}
+
+func (r *standaloneRedis) AppendPrefix(key string) string <span class="cov0" title="0">{
+        return fmt.Sprintf("%s:%s", r.prefix, key)
+}</span>
+func (r *standaloneRedis) AppendPrefixSlice(keys []string) []string <span class="cov0" title="0">{
+        prefixedKeys := make([]string, len(keys))
+        for i, key := range keys </span><span class="cov0" title="0">{
+                prefixedKeys[i] = r.AppendPrefix(key)
+        }</span>
+        <span class="cov0" title="0">return prefixedKeys</span>
+}
+
+func (r *standaloneRedis) Get(ctx context.Context, key string) (string, error) <span class="cov0" title="0">{
+        return r.client.Get(ctx, r.AppendPrefix(key)).Result()
+}</span>
+
+func (r *standaloneRedis) Set(ctx context.Context, key string, value interface{}, expiration time.Duration) (string, error) <span class="cov0" title="0">{
+        return r.client.Set(ctx, r.AppendPrefix(key), value, expiration).Result()
+}</span>
+
+func (r *standaloneRedis) Ping(ctx context.Context) (string, error) <span class="cov0" title="0">{
+        return r.client.Ping(ctx).Result()
+}</span>
+
+func (r *standaloneRedis) Publish(ctx context.Context, channel string, message interface{}) (int64, error) <span class="cov0" title="0">{
+        return r.client.Publish(ctx, r.AppendPrefix(channel), message).Result()
+}</span>
+
+func (r *standaloneRedis) Subscribe(ctx context.Context, channels ...string) *redis.PubSub <span class="cov0" title="0">{
+        return r.client.Subscribe(ctx, r.AppendPrefixSlice(channels)...)
+}</span>
+
+func (r *standaloneRedis) RPop(ctx context.Context, key string) (string, error) <span class="cov0" title="0">{
+        return r.client.RPop(ctx, r.AppendPrefix(key)).Result()
+}</span>
+
+func (r *standaloneRedis) RPopCount(ctx context.Context, key string, count int) ([]string, error) <span class="cov0" title="0">{
+        return r.client.RPopCount(ctx, r.AppendPrefix(key), count).Result()
+}</span>
+
+func (r *standaloneRedis) LPush(ctx context.Context, key string, values ...interface{}) (int64, error) <span class="cov0" title="0">{
+        return r.client.LPush(ctx, r.AppendPrefix(key), values...).Result()
+}</span>
+
+func (r *standaloneRedis) Pipeline() redis.Pipeliner <span class="cov0" title="0">{
+        return r.client.Pipeline()
+}</span>
+
+func (r *standaloneRedis) SAdd(ctx context.Context, key string, members ...interface{}) (int64, error) <span class="cov0" title="0">{
+        return r.client.SAdd(ctx, r.AppendPrefix(key), members...).Result()
+}</span>
+
+func (r *standaloneRedis) SRem(ctx context.Context, key string, members ...interface{}) (int64, error) <span class="cov0" title="0">{
+        return r.client.SRem(ctx, r.AppendPrefix(key), members...).Result()
+}</span>
+
+func (r *standaloneRedis) SPopN(ctx context.Context, key string, count int64) ([]string, error) <span class="cov0" title="0">{
+        return r.client.SPopN(ctx, r.AppendPrefix(key), count).Result()
+}</span>
+
+func (r *standaloneRedis) Close() error <span class="cov0" title="0">{
+        return r.client.Close()
+}</span>
+</pre>
+		
+		<pre class="file" id="file21" style="display: none">package middleware
+
+import (
+        "errors"
+        "net/http"
+        "strings"
+
+        "github.com/gin-gonic/gin"
+
+        "booking-event/internal/common/util"
+        "booking-event/internal/modules/auth/model"
+)
+
+type AuthValidator interface {
+        VerifyJWTToken(token string) (*model.TokenClaims, error)
+}
+
+func ExtractTokenFromBearer(token string) (string, error) <span class="cov0" title="0">{
+        splitToken := strings.Split(token, "Bearer ")
+        if len(splitToken) != 2 </span><span class="cov0" title="0">{
+                return "", errors.New("invalid token")
+        }</span>
+        <span class="cov0" title="0">return splitToken[1], nil</span>
+}
+
+func AuthMiddleware(validator AuthValidator) gin.HandlerFunc <span class="cov0" title="0">{
+        return func(ctx *gin.Context) </span><span class="cov0" title="0">{
+                bearerToken := ctx.GetHeader("Authorization")
+                if bearerToken == "" </span><span class="cov0" title="0">{
+                        ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+                        return
+                }</span>
+                <span class="cov0" title="0">token, err := ExtractTokenFromBearer(bearerToken)
+                if err != nil </span><span class="cov0" title="0">{
+                        ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+                        return
+                }</span>
+                <span class="cov0" title="0">claims, err := validator.VerifyJWTToken(token)
+                if err != nil </span><span class="cov0" title="0">{
+                        ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+                        return
+                }</span>
+                <span class="cov0" title="0">ctx.Request = ctx.Request.WithContext(util.SetUserIDContext(ctx.Request.Context(), claims.UserID))
+                ctx.Next()</span>
+        }
+}
+
+func AdminAuthMiddleware(validator AuthValidator) gin.HandlerFunc <span class="cov0" title="0">{
+        return func(ctx *gin.Context) </span><span class="cov0" title="0">{
+                bearerToken := ctx.GetHeader("Authorization")
+                if bearerToken == "" </span><span class="cov0" title="0">{
+                        ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+                        return
+                }</span>
+                <span class="cov0" title="0">token, err := ExtractTokenFromBearer(bearerToken)
+                if err != nil </span><span class="cov0" title="0">{
+                        ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+                        return
+                }</span>
+                <span class="cov0" title="0">claims, err := validator.VerifyJWTToken(token)
+                if err != nil </span><span class="cov0" title="0">{
+                        ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+                        return
+                }</span>
+                <span class="cov0" title="0">if !strings.EqualFold(string(claims.Role), string(model.RoleAdmin)) </span><span class="cov0" title="0">{
+                        ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+                        return
+                }</span>
+                <span class="cov0" title="0">ctx.Request = ctx.Request.WithContext(util.SetUserIDContext(ctx.Request.Context(), claims.UserID))
+                ctx.Next()</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file22" style="display: none">package entity
+
+import "booking-event/internal/modules/auth/model"
+
+func ConvertUserToModel(user User) *model.User <span class="cov0" title="0">{
+        return &amp;model.User{
+                ID:             user.ID,
+                Email:          user.Email,
+                Role:           model.UserRole(user.Role),
+                HashedPassword: user.Password,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file23" style="display: none">package store
+
+import (
+        "booking-event/internal/modules/auth/model"
+        "booking-event/internal/modules/auth/repository/entity"
+        "context"
+
+        "github.com/jmoiron/sqlx"
+)
+
+type UserRepository struct {
+        db sqlx.ExtContext
+}
+
+func NewUserRepository(db sqlx.ExtContext) *UserRepository <span class="cov0" title="0">{
+        return &amp;UserRepository{db: db}
+}</span>
+
+func (r *UserRepository) GetUserByEmail(ctx context.Context, email string) (*model.User, error) <span class="cov0" title="0">{
+        var user entity.User
+        if err := r.db.QueryRowxContext(ctx, "SELECT id, email, password, role FROM users WHERE email = $1", email).StructScan(&amp;user); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">return entity.ConvertUserToModel(user), nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file24" style="display: none">//go:generate mockgen -source=auth.go -destination=auth_mock.go -package=services
+package services
+
+import (
+        "context"
+        "errors"
+        "time"
+
+        "booking-event/internal/modules/auth/model"
+
+        "github.com/golang-jwt/jwt/v4"
+        "golang.org/x/crypto/bcrypt"
+)
+
+type UserRepository interface {
+        GetUserByEmail(ctx context.Context, email string) (*model.User, error)
+}
+
+type AuthServiceConfig struct {
+        SecretKey       string
+        AccessTokenExp  time.Duration
+        RefreshTokenExp time.Duration
+}
+
+type AuthService struct {
+        userDBRepo UserRepository
+        cfg        AuthServiceConfig
+}
+
+func NewAuthService(userDBRepo UserRepository, cfg AuthServiceConfig) *AuthService <span class="cov8" title="1">{
+        return &amp;AuthService{
+                userDBRepo: userDBRepo,
+                cfg:        cfg,
+        }
+}</span>
+
+func (s *AuthService) LoginByEmail(ctx context.Context, email string, password string) (*model.User, *model.TokenPair, error) <span class="cov8" title="1">{
+        user, err := s.userDBRepo.GetUserByEmail(ctx, email)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, nil, err
+        }</span>
+
+        <span class="cov8" title="1">if !s.comparePassword(password, user.HashedPassword) </span><span class="cov8" title="1">{
+                return nil, nil, model.ErrInvalidPassword
+        }</span>
+
+        // Generate JWT tokens
+        <span class="cov8" title="1">tokenPair, err := s.generateTokenPair(user)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, nil, err
+        }</span>
+
+        <span class="cov8" title="1">return user, tokenPair, nil</span>
+}
+
+func (s *AuthService) comparePassword(password string, hashedPassword string) bool <span class="cov8" title="1">{
+        return bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(password)) == nil
+}</span>
+
+func (s *AuthService) generateTokenPair(user *model.User) (*model.TokenPair, error) <span class="cov8" title="1">{
+        accessToken, err := s.generateJWTToken(user, s.cfg.AccessTokenExp)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">refreshToken, err := s.generateJWTToken(user, s.cfg.RefreshTokenExp)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return &amp;model.TokenPair{
+                AccessToken:     accessToken,
+                RefreshToken:    refreshToken,
+                AccessTokenExp:  time.Now().Add(s.cfg.AccessTokenExp),
+                RefreshTokenExp: time.Now().Add(s.cfg.RefreshTokenExp),
+        }, nil</span>
+}
+
+func (s *AuthService) generateJWTToken(user *model.User, expiration time.Duration) (string, error) <span class="cov8" title="1">{
+        expirationTime := time.Now().Add(expiration)
+        claims := &amp;model.TokenClaims{
+                UserID: user.ID,
+                Email:  user.Email,
+                RegisteredClaims: jwt.RegisteredClaims{
+                        ExpiresAt: jwt.NewNumericDate(expirationTime),
+                },
+        }
+
+        token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+        tokenString, err := token.SignedString([]byte(s.cfg.SecretKey))
+        if err != nil </span><span class="cov0" title="0">{
+                return "", err
+        }</span>
+
+        <span class="cov8" title="1">return tokenString, nil</span>
+}
+
+func (s *AuthService) RefreshToken(ctx context.Context, refreshToken string) (*model.TokenPair, error) <span class="cov8" title="1">{
+        // Verify the refresh token
+        claims := &amp;model.TokenClaims{}
+        token, err := jwt.ParseWithClaims(refreshToken, claims, func(token *jwt.Token) (interface{}, error) </span><span class="cov8" title="1">{
+                return []byte(s.cfg.SecretKey), nil
+        }</span>)
+
+        <span class="cov8" title="1">if err != nil || !token.Valid </span><span class="cov8" title="1">{
+                return nil, errors.New("invalid refresh token")
+        }</span>
+
+        <span class="cov8" title="1">user, err := s.userDBRepo.GetUserByEmail(ctx, claims.Email)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">newAccessToken, err := s.generateJWTToken(user, s.cfg.AccessTokenExp)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return &amp;model.TokenPair{
+                AccessToken:  newAccessToken,
+                RefreshToken: refreshToken,
+        }, nil</span>
+}
+
+func (s *AuthService) VerifyJWTToken(token string) (*model.TokenClaims, error) <span class="cov8" title="1">{
+        claims := &amp;model.TokenClaims{}
+        _, err := jwt.ParseWithClaims(token, claims, func(token *jwt.Token) (interface{}, error) </span><span class="cov8" title="1">{
+                return []byte(s.cfg.SecretKey), nil
+        }</span>)
+        <span class="cov8" title="1">if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return claims, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file25" style="display: none">// Code generated by MockGen. DO NOT EDIT.
+// Source: auth.go
+//
+// Generated by this command:
+//
+//        mockgen -source=auth.go -destination=auth_mock.go -package=services
+//
+
+// Package services is a generated GoMock package.
+package services
+
+import (
+        model "booking-event/internal/modules/auth/model"
+        context "context"
+        reflect "reflect"
+
+        gomock "go.uber.org/mock/gomock"
+)
+
+// MockUserRepository is a mock of UserRepository interface.
+type MockUserRepository struct {
+        ctrl     *gomock.Controller
+        recorder *MockUserRepositoryMockRecorder
+}
+
+// MockUserRepositoryMockRecorder is the mock recorder for MockUserRepository.
+type MockUserRepositoryMockRecorder struct {
+        mock *MockUserRepository
+}
+
+// NewMockUserRepository creates a new mock instance.
+func NewMockUserRepository(ctrl *gomock.Controller) *MockUserRepository <span class="cov8" title="1">{
+        mock := &amp;MockUserRepository{ctrl: ctrl}
+        mock.recorder = &amp;MockUserRepositoryMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockUserRepository) EXPECT() *MockUserRepositoryMockRecorder <span class="cov8" title="1">{
+        return m.recorder
+}</span>
+
+// GetUserByEmail mocks base method.
+func (m *MockUserRepository) GetUserByEmail(ctx context.Context, email string) (*model.User, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "GetUserByEmail", ctx, email)
+        ret0, _ := ret[0].(*model.User)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// GetUserByEmail indicates an expected call of GetUserByEmail.
+func (mr *MockUserRepositoryMockRecorder) GetUserByEmail(ctx, email any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserByEmail", reflect.TypeOf((*MockUserRepository)(nil).GetUserByEmail), ctx, email)
+}</span>
+</pre>
+		
+		<pre class="file" id="file26" style="display: none">//go:generate mockgen -source=auth.go -destination=auth_mock.go -package=transporthttp
+package transporthttp
+
+import (
+        "context"
+        "errors"
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+
+        "booking-event/internal/common/handler"
+        commonmodel "booking-event/internal/common/model"
+        "booking-event/internal/modules/auth/model"
+)
+
+type AuthHandler interface {
+        LoginByEmail(ctx context.Context, email string, password string) (*model.User, *model.TokenPair, error)
+}
+
+type AuthHttpHandler struct {
+        authService AuthHandler
+}
+
+func NewAuthHandler(authService AuthHandler) handler.HttpHandler <span class="cov0" title="0">{
+        return &amp;AuthHttpHandler{authService: authService}
+}</span>
+
+func (h *AuthHttpHandler) RegisterRoutes(router *gin.RouterGroup) <span class="cov0" title="0">{
+        router.POST("/login", h.LoginByEmail)
+}</span>
+
+func (h *AuthHttpHandler) LoginByEmail(c *gin.Context) <span class="cov0" title="0">{
+        var request model.LoginRequest
+        if err := c.ShouldBindJSON(&amp;request); err != nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov0" title="0">user, tokenPair, err := h.authService.LoginByEmail(c.Request.Context(), request.Email, request.Password)
+        if errors.Is(err, model.ErrInvalidPassword) </span><span class="cov0" title="0">{
+                c.JSON(http.StatusUnauthorized, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span> else<span class="cov0" title="0"> if err != nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusInternalServerError, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov0" title="0">c.JSON(http.StatusOK, commonmodel.Response{
+                Success: true,
+                Message: "login success",
+                Data: model.LoginResponse{
+                        Email:           user.Email,
+                        UserID:          user.ID,
+                        Role:            string(user.Role),
+                        AccessToken:     tokenPair.AccessToken,
+                        RefreshToken:    tokenPair.RefreshToken,
+                        ExpAccessToken:  tokenPair.AccessTokenExp,
+                        ExpRefreshToken: tokenPair.RefreshTokenExp,
+                },
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file27" style="display: none">package email
+
+import (
+        "booking-event/internal/infra/emailsender"
+        "booking-event/internal/modules/booking/model"
+        "context"
+)
+
+type EmailClient struct {
+        emailsender.EmailService
+}
+
+func NewEmailClient(emailService emailsender.EmailService) *EmailClient <span class="cov0" title="0">{
+        return &amp;EmailClient{EmailService: emailService}
+}</span>
+
+func (c *EmailClient) SendReminderEmail(ctx context.Context, task model.SendReminderEmailTask) error <span class="cov0" title="0">{
+        email := emailsender.Email{
+                To:      task.User.Email,
+                From:    "noreply@booking-event.com",
+                Subject: "Reminder",
+                Body:    "Reminder",
+        }
+        return c.EmailService.SendEmail(ctx, &amp;email)
+}</span>
+
+func (c *EmailClient) SendConfirmationEmail(ctx context.Context, task model.SendConfirmationEmailTask) error <span class="cov0" title="0">{
+        email := emailsender.Email{
+                To:      task.User.Email,
+                From:    "noreply@booking-event.com",
+                Subject: "Confirmation",
+                Body:    "Confirmation",
+        }
+        return c.EmailService.SendEmail(ctx, &amp;email)
+}</span>
+</pre>
+		
+		<pre class="file" id="file28" style="display: none">package paymentgateway
+
+import (
+        "booking-event/internal/infra/paymentgateway"
+        "context"
+)
+
+type Client struct {
+        paymentGateway paymentgateway.PaymentGateway
+}
+
+func NewClient(paymentGateway paymentgateway.PaymentGateway) *Client <span class="cov0" title="0">{
+        return &amp;Client{paymentGateway: paymentGateway}
+}</span>
+
+func (c *Client) CreatePayment(ctx context.Context, payment *paymentgateway.Payment) error <span class="cov0" title="0">{
+        return c.paymentGateway.CreatePayment(ctx, payment)
+}</span>
+</pre>
+		
+		<pre class="file" id="file29" style="display: none">package entity
+
+import (
+        "booking-event/internal/common/util"
+        "booking-event/internal/modules/booking/model"
+        "database/sql"
+)
+
+func ConvertBookingToModel(booking *Booking) *model.Booking <span class="cov0" title="0">{
+        return &amp;model.Booking{
+                ID:              booking.ID,
+                UserID:          booking.UserID,
+                EventID:         booking.EventID,
+                Status:          model.BookingStatus(booking.Status),
+                Quantity:        booking.Quantity,
+                InitialQuantity: booking.InitialQuantity,
+                CreatedAt:       booking.CreatedAt,
+                UpdatedAt:       booking.UpdatedAt,
+        }
+}</span>
+
+func ConvertBookingToEntity(booking *model.Booking) *Booking <span class="cov0" title="0">{
+        return &amp;Booking{
+                ID:              booking.ID,
+                UserID:          booking.UserID,
+                EventID:         booking.EventID,
+                Status:          string(booking.Status),
+                Quantity:        booking.Quantity,
+                InitialQuantity: booking.InitialQuantity,
+                CreatedAt:       booking.CreatedAt,
+                UpdatedAt:       booking.UpdatedAt,
+        }
+}</span>
+
+func ConvertEventTokenToEntity(token model.EventToken) *EventToken <span class="cov0" title="0">{
+        out := &amp;EventToken{
+                ID:        token.ID,
+                EventID:   token.EventID,
+                Token:     token.Token,
+                Status:    string(token.Status),
+                CreatedAt: token.CreatedAt,
+                UpdatedAt: token.UpdatedAt,
+        }
+        if token.HolderID != nil </span><span class="cov0" title="0">{
+                out.HolderID = sql.NullInt64{Int64: int64(*token.HolderID), Valid: true}
+        }</span>
+        <span class="cov0" title="0">if token.LockedUntil != nil </span><span class="cov0" title="0">{
+                out.LockedUntil = sql.NullTime{Time: *token.LockedUntil, Valid: true}
+        }</span>
+        <span class="cov0" title="0">return out</span>
+}
+
+func ConvertEventTokensToEntities(tokens []model.EventToken) []EventToken <span class="cov0" title="0">{
+        entityTokens := make([]EventToken, len(tokens))
+        for i, token := range tokens </span><span class="cov0" title="0">{
+                entityTokens[i] = *ConvertEventTokenToEntity(token)
+        }</span>
+        <span class="cov0" title="0">return entityTokens</span>
+}
+
+func ConvertEventTokenToModel(token EventToken) *model.EventToken <span class="cov0" title="0">{
+        out := &amp;model.EventToken{
+                ID:        token.ID,
+                EventID:   token.EventID,
+                Token:     token.Token,
+                Status:    model.TokenStatus(token.Status),
+                CreatedAt: token.CreatedAt,
+                UpdatedAt: token.UpdatedAt,
+        }
+        if token.HolderID.Valid </span><span class="cov0" title="0">{
+                out.HolderID = util.ToPtr(int(token.HolderID.Int64))
+        }</span>
+        <span class="cov0" title="0">if token.LockedUntil.Valid </span><span class="cov0" title="0">{
+                out.LockedUntil = &amp;token.LockedUntil.Time
+        }</span>
+        <span class="cov0" title="0">return out</span>
+}
+
+func ConvertEventTokensToModels(tokens []EventToken) []*model.EventToken <span class="cov0" title="0">{
+        models := make([]*model.EventToken, len(tokens))
+        for i, token := range tokens </span><span class="cov0" title="0">{
+                models[i] = ConvertEventTokenToModel(token)
+        }</span>
+        <span class="cov0" title="0">return models</span>
+}
+
+func ConvertBookingItemsToModels(bookingItems []BookingItem) []model.BookingItem <span class="cov0" title="0">{
+        models := make([]model.BookingItem, len(bookingItems))
+        for i, item := range bookingItems </span><span class="cov0" title="0">{
+                models[i] = model.BookingItem{ID: item.ID, BookingID: item.BookingID, Token: item.Token, CreatedAt: item.CreatedAt}
+        }</span>
+        <span class="cov0" title="0">return models</span>
+}
+
+func ConvertBookingItemsToEntities(bookingItems []model.BookingItem) []BookingItem <span class="cov0" title="0">{
+        entities := make([]BookingItem, len(bookingItems))
+        for i, item := range bookingItems </span><span class="cov0" title="0">{
+                entities[i] = BookingItem{ID: item.ID, BookingID: item.BookingID, Token: item.Token, CreatedAt: item.CreatedAt}
+        }</span>
+        <span class="cov0" title="0">return entities</span>
+}
+
+func ConvertEventToEntity(event model.Event) *Event <span class="cov0" title="0">{
+        return &amp;Event{
+                ID:             event.ID,
+                Name:           event.Name,
+                AvailableSeats: event.AvailableSeats,
+                StartAt:        event.StartAt,
+                Location:       event.Location,
+                Category:       string(event.Category),
+                Price:          event.Price,
+                CreatorID:      event.CreatorID,
+                Currency:       event.Currency,
+                Status:         string(event.Status),
+                CreatedAt:      event.CreatedAt,
+                UpdatedAt:      event.UpdatedAt,
+        }
+}</span>
+
+func ConvertEventsToEntities(events []*model.Event) []Event <span class="cov0" title="0">{
+        entities := make([]Event, len(events))
+        for i, event := range events </span><span class="cov0" title="0">{
+                entities[i] = *ConvertEventToEntity(*event)
+        }</span>
+        <span class="cov0" title="0">return entities</span>
+}
+
+func ConvertEventToModel(event Event) *model.Event <span class="cov0" title="0">{
+        return &amp;model.Event{
+                ID:             event.ID,
+                Name:           event.Name,
+                AvailableSeats: event.AvailableSeats,
+                StartAt:        event.StartAt,
+                Location:       event.Location,
+                Category:       model.EventCategory(event.Category),
+                Price:          event.Price,
+                Currency:       event.Currency,
+                Status:         model.EventStatus(event.Status),
+                CreatorID:      event.CreatorID,
+                CreatedAt:      event.CreatedAt,
+                UpdatedAt:      event.UpdatedAt,
+        }
+}</span>
+
+func ConvertEventsToModels(events []Event) []model.Event <span class="cov0" title="0">{
+        models := make([]model.Event, len(events))
+        for i, event := range events </span><span class="cov0" title="0">{
+                models[i] = *ConvertEventToModel(event)
+        }</span>
+        <span class="cov0" title="0">return models</span>
+}
+</pre>
+		
+		<pre class="file" id="file30" style="display: none">package store
+
+import (
+        "context"
+        "errors"
+
+        "github.com/Rhymond/go-money"
+        "github.com/jmoiron/sqlx"
+        "github.com/lib/pq"
+
+        bookingasynq "booking-event/internal/infra/asynq"
+        "booking-event/internal/infra/paymentgateway"
+        postgresql "booking-event/internal/infra/posgresql"
+        "booking-event/internal/modules/booking/model"
+        "booking-event/internal/modules/booking/repository/entity"
+)
+
+type PaymentClient interface {
+        CreatePayment(ctx context.Context, payment *paymentgateway.Payment) error
+}
+
+type BookingItemRepositoryForBooking interface {
+        CreateBookingItemsTx(ctx context.Context, tx postgresql.ExecerContext, bookingItems []model.BookingItem) error
+        GetBookingItemsByBookingID(ctx context.Context, bookingID int) ([]model.BookingItem, error)
+}
+
+type EventTokenRepositoryForBooking interface {
+        ReleaseTokensByTx(ctx context.Context, tx postgresql.ExecerContext, tokens []string) error
+        ConfirmUsedTokensByTx(ctx context.Context, tx postgresql.ExecerContext, tokens []model.ConfirmingToken) error
+}
+
+type BookingRepository struct {
+        db              *sqlx.DB
+        paymentClient   PaymentClient
+        bookingItemRepo BookingItemRepositoryForBooking
+        tokenRepo       EventTokenRepositoryForBooking
+        asynqClient     bookingasynq.AsyncTaskEnqueueClient
+}
+
+func NewBookingRepository(
+        db *sqlx.DB,
+        paymentClient PaymentClient,
+        bookingItemRepo BookingItemRepositoryForBooking,
+        tokenRepo EventTokenRepositoryForBooking,
+        asynqClient bookingasynq.AsyncTaskEnqueueClient,
+) *BookingRepository <span class="cov0" title="0">{
+        return &amp;BookingRepository{db: db, paymentClient: paymentClient, bookingItemRepo: bookingItemRepo, tokenRepo: tokenRepo, asynqClient: asynqClient}
+}</span>
+
+const ()
+
+func (c *BookingRepository) CreateBooking(ctx context.Context, booking *model.Booking, bookingItems []model.BookingItem) error <span class="cov0" title="0">{
+        if len(bookingItems) == 0 </span><span class="cov0" title="0">{
+                return errors.New("booking items are required")
+        }</span>
+        <span class="cov0" title="0">tx, err := c.db.BeginTxx(ctx, nil)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">entityBooking := entity.ConvertBookingToEntity(booking)
+        err = tx.QueryRowxContext(ctx, `
+                INSERT INTO bookings (user_id, event_id, status, initial_quantity, quantity)
+                VALUES ($1, $2, $3, $4, $5)
+                RETURNING id
+        `, entityBooking.UserID, entityBooking.EventID, entityBooking.Status, entityBooking.InitialQuantity, entityBooking.Quantity).Scan(&amp;booking.ID)
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return err
+        }</span>
+
+        <span class="cov0" title="0">for i := range bookingItems </span><span class="cov0" title="0">{
+                bookingItems[i].BookingID = booking.ID
+        }</span>
+
+        <span class="cov0" title="0">err = c.bookingItemRepo.CreateBookingItemsTx(ctx, tx, bookingItems)
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return tx.Commit()</span>
+}
+
+func (c *BookingRepository) CountBookingByUserID(ctx context.Context, eventID int, userID int) (int, error) <span class="cov0" title="0">{
+        var count int
+        err := c.db.GetContext(ctx, &amp;count, "SELECT COALESCE(SUM(quantity), 0) FROM bookings WHERE event_id = $1 AND user_id = $2 AND status = ANY($3)", eventID, userID, pq.Array([]model.BookingStatus{model.BookingStatusPending, model.BookingStatusConfirmed, model.BookingStatusPaid}))
+        return count, err
+}</span>
+
+func (c *BookingRepository) GetBookingByID(ctx context.Context, id int) (*model.Booking, error) <span class="cov0" title="0">{
+        entityBooking := &amp;entity.Booking{}
+        err := c.db.QueryRowxContext(ctx, "SELECT id, user_id, event_id, status, initial_quantity, quantity FROM bookings WHERE id = $1", id).StructScan(entityBooking)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">return entity.ConvertBookingToModel(entityBooking), nil</span>
+}
+
+func (c *BookingRepository) ConfirmBooking(ctx context.Context, booking *model.Booking, event *model.Event, bookingItems []model.BookingItem) error <span class="cov0" title="0">{
+        tx, err := c.db.BeginTxx(ctx, nil)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">_, err = tx.ExecContext(ctx, "UPDATE bookings SET status = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2", string(model.BookingStatusConfirmed), booking.ID)
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return err
+        }</span>
+
+        <span class="cov0" title="0">tokens := make([]model.ConfirmingToken, len(bookingItems))
+        for i, item := range bookingItems </span><span class="cov0" title="0">{
+                tokens[i] = model.ConfirmingToken{Token: item.Token, HolderID: int32(booking.UserID), EventID: event.ID}
+        }</span>
+
+        <span class="cov0" title="0">err = c.tokenRepo.ConfirmUsedTokensByTx(ctx, tx, tokens)
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return err
+        }</span>
+
+        <span class="cov0" title="0">amount := money.New(event.Price, event.Currency)
+
+        payment := &amp;paymentgateway.Payment{
+                Amount:   float64(amount.Amount()),
+                Currency: amount.Currency().Code,
+        }
+
+        err = c.paymentClient.CreatePayment(ctx, payment)
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return err
+        }</span>
+
+        // _ = c.asynqClient.Enqueue(ctx, asynq.NewTask(string(model.TaskTypeSendConfirmationEmail), []byte("{}")))
+        // _ = c.asynqClient.Enqueue(ctx, asynq.NewTask(string(model.TaskTypeSendReminderEmail), []byte("{}")), asynq.ProcessAt(event.StartAt))
+
+        <span class="cov0" title="0">return tx.Commit()</span>
+}
+
+func (c *BookingRepository) CancelBooking(ctx context.Context, bookingID int) error <span class="cov0" title="0">{
+        bookingItems, err := c.bookingItemRepo.GetBookingItemsByBookingID(ctx, bookingID)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">if len(bookingItems) == 0 </span><span class="cov0" title="0">{
+                return nil
+        }</span>
+
+        <span class="cov0" title="0">tx, err := c.db.BeginTxx(ctx, nil)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">_, err = tx.NamedExecContext(ctx, "UPDATE bookings SET status = :status, updated_at = CURRENT_TIMESTAMP WHERE id = :id", map[string]interface{}{
+                "id":     bookingID,
+                "status": string(model.BookingStatusCanceled),
+        })
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return err
+        }</span>
+
+        <span class="cov0" title="0">bookingItemsTokens := make([]string, len(bookingItems))
+        for i, item := range bookingItems </span><span class="cov0" title="0">{
+                bookingItemsTokens[i] = item.Token
+        }</span>
+
+        <span class="cov0" title="0">err = c.tokenRepo.ReleaseTokensByTx(ctx, tx, bookingItemsTokens)
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return err
+        }</span>
+
+        <span class="cov0" title="0">err = tx.Commit()
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file31" style="display: none">package store
+
+import (
+        "context"
+        "database/sql"
+
+        "github.com/jmoiron/sqlx"
+
+        "booking-event/internal/common/errors"
+        postgresql "booking-event/internal/infra/posgresql"
+        "booking-event/internal/modules/booking/model"
+        "booking-event/internal/modules/booking/repository/entity"
+)
+
+type EventRepository struct {
+        db        *sqlx.DB
+        tokenRepo TokenRepositoryForEvent
+}
+
+type TokenRepositoryForEvent interface {
+        CreateTokensTX(ctx context.Context, tx postgresql.ExecerContext, tokens []model.EventToken) error
+}
+
+func NewEventRepository(db *sqlx.DB, tokenRepo TokenRepositoryForEvent) *EventRepository <span class="cov0" title="0">{
+        return &amp;EventRepository{db: db, tokenRepo: tokenRepo}
+}</span>
+
+func (r *EventRepository) CreateEvent(ctx context.Context, event model.Event, tokens []model.EventToken) error <span class="cov0" title="0">{
+        entityEvent := entity.ConvertEventToEntity(event)
+        tx, err := r.db.BeginTxx(ctx, nil)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov0" title="0">err = tx.QueryRowxContext(ctx, "INSERT INTO events (name, available_seats, start_at, location, category, price, currency, creator_id, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id",
+                entityEvent.Name,
+                entityEvent.AvailableSeats,
+                entityEvent.StartAt,
+                entityEvent.Location,
+                entityEvent.Category,
+                entityEvent.Price,
+                entityEvent.Currency,
+                entityEvent.CreatorID,
+                entityEvent.Status).Scan(&amp;entityEvent.ID)
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return err
+        }</span>
+
+        <span class="cov0" title="0">for i := range tokens </span><span class="cov0" title="0">{
+                tokens[i].EventID = entityEvent.ID
+        }</span>
+        <span class="cov0" title="0">err = r.tokenRepo.CreateTokensTX(ctx, tx, tokens)
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return err
+        }</span>
+        <span class="cov0" title="0">return tx.Commit()</span>
+}
+
+func (r *EventRepository) GetEventByID(ctx context.Context, id int) (*model.Event, error) <span class="cov0" title="0">{
+        event := entity.Event{}
+        err := r.db.GetContext(ctx, &amp;event, "SELECT id, name, available_seats, start_at, location, category, price, currency, creator_id, status, created_at, updated_at FROM events WHERE id = $1", id)
+        if err == sql.ErrNoRows </span><span class="cov0" title="0">{
+                return nil, errors.ErrNotFound
+        }</span>
+        <span class="cov0" title="0">if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return entity.ConvertEventToModel(event), nil</span>
+}
+
+func (r *EventRepository) QueryEvents(ctx context.Context, query model.EventQuery) ([]model.Event, error) <span class="cov0" title="0">{
+        queryString := `SELECT id, name, available_seats, start_at, location, category, price, currency, creator_id, status, created_at, updated_at FROM events WHERE 1=1`
+
+        if query.ID != 0 </span><span class="cov0" title="0">{
+                queryString += " AND id = :id"
+        }</span>
+        <span class="cov0" title="0">if query.Name != "" </span><span class="cov0" title="0">{
+                queryString += " AND name ILIKE :name"
+        }</span>
+        <span class="cov0" title="0">if query.Location != "" </span><span class="cov0" title="0">{
+                queryString += " AND location = :location"
+        }</span>
+        <span class="cov0" title="0">if query.Category != "" </span><span class="cov0" title="0">{
+                queryString += " AND category = :category"
+        }</span>
+        <span class="cov0" title="0">if !query.StartFrom.IsZero() </span><span class="cov0" title="0">{
+                queryString += " AND start_at &gt;= :start_from"
+        }</span>
+        <span class="cov0" title="0">if !query.StartTo.IsZero() </span><span class="cov0" title="0">{
+                queryString += " AND start_at &lt;= :start_to"
+        }</span>
+        <span class="cov0" title="0">queryString += ` ORDER BY updated_at DESC`
+
+        if query.Pagination.Limit &gt; 0 </span><span class="cov0" title="0">{
+                queryString += ` LIMIT :limit`
+        }</span>
+        <span class="cov0" title="0">if query.Pagination.Page &gt; 0 </span><span class="cov0" title="0">{
+                queryString += ` OFFSET :offset`
+        }</span>
+
+        <span class="cov0" title="0">events := []entity.Event{}
+        rows, err := r.db.NamedQueryContext(ctx, queryString, map[string]interface{}{
+                "id":         query.ID,
+                "limit":      query.Pagination.GetLimit(),
+                "offset":     query.Pagination.GetOffset(),
+                "name":       "%" + query.Name + "%",
+                "location":   query.Location,
+                "category":   query.Category,
+                "start_from": query.StartFrom,
+                "start_to":   query.StartTo,
+        })
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">defer rows.Close()
+        for rows.Next() </span><span class="cov0" title="0">{
+                var event entity.Event
+                err := rows.StructScan(&amp;event)
+                if err != nil </span><span class="cov0" title="0">{
+                        return nil, err
+                }</span>
+                <span class="cov0" title="0">events = append(events, event)</span>
+        }
+
+        <span class="cov0" title="0">return entity.ConvertEventsToModels(events), nil</span>
+}
+
+func (r *EventRepository) UpdateEvent(ctx context.Context, event model.Event) error <span class="cov0" title="0">{
+        entityEvent := entity.ConvertEventToEntity(event)
+        _, err := r.db.NamedExecContext(ctx, "UPDATE events SET status = :status, updated_at = CURRENT_TIMESTAMP WHERE id = :id", entityEvent)
+        return err
+}</span>
+</pre>
+		
+		<pre class="file" id="file32" style="display: none">package store
+
+import (
+        "context"
+
+        "github.com/jmoiron/sqlx"
+
+        postgresql "booking-event/internal/infra/posgresql"
+        "booking-event/internal/modules/booking/model"
+        "booking-event/internal/modules/booking/repository/entity"
+)
+
+type BookingItemRepository struct {
+        db *sqlx.DB
+}
+
+func NewBookingItemRepository(db *sqlx.DB) *BookingItemRepository <span class="cov0" title="0">{
+        return &amp;BookingItemRepository{db: db}
+}</span>
+
+func (r *BookingItemRepository) CreateBookingItemsTx(ctx context.Context, tx postgresql.ExecerContext, bookingItems []model.BookingItem) error <span class="cov0" title="0">{
+        entities := entity.ConvertBookingItemsToEntities(bookingItems)
+        _, err := tx.NamedExecContext(ctx, "INSERT INTO booking_items (booking_id, token) VALUES (:booking_id, :token)", entities)
+        return err
+}</span>
+
+func (r *BookingItemRepository) CreateBookingItems(ctx context.Context, bookingItems []model.BookingItem) error <span class="cov0" title="0">{
+        return r.CreateBookingItemsTx(ctx, r.db, bookingItems)
+}</span>
+
+func (r *BookingItemRepository) GetBookingItemsByBookingID(ctx context.Context, bookingID int) ([]model.BookingItem, error) <span class="cov0" title="0">{
+        var bookingItems []entity.BookingItem
+        err := r.db.SelectContext(ctx, &amp;bookingItems, "SELECT id, booking_id, token, created_at FROM booking_items WHERE booking_id = $1", bookingID)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">return entity.ConvertBookingItemsToModels(bookingItems), nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file33" style="display: none">package store
+
+import (
+        "context"
+        "database/sql"
+        "time"
+
+        "github.com/jmoiron/sqlx"
+        "github.com/lib/pq"
+
+        postgresql "booking-event/internal/infra/posgresql"
+        "booking-event/internal/modules/booking/model"
+        "booking-event/internal/modules/booking/repository/entity"
+)
+
+type TokenConfig struct {
+        LockedDuration time.Duration
+}
+
+type TokenRepository struct {
+        db     *sqlx.DB
+        config TokenConfig
+}
+
+const (
+        tokenKey = "event:token:%d"
+)
+
+func NewTokenRepository(
+        db *sqlx.DB,
+        config TokenConfig,
+) *TokenRepository <span class="cov0" title="0">{
+        return &amp;TokenRepository{
+                db:     db,
+                config: config,
+        }
+}</span>
+
+func (r *TokenRepository) CreateTokens(ctx context.Context, tokens []model.EventToken) error <span class="cov0" title="0">{
+        return r.CreateTokensTX(ctx, r.db, tokens)
+}</span>
+
+func (r *TokenRepository) CreateTokensTX(ctx context.Context, tx postgresql.ExecerContext, tokens []model.EventToken) error <span class="cov0" title="0">{
+        entities := entity.ConvertEventTokensToEntities(tokens)
+        _, err := tx.NamedExecContext(ctx, "INSERT INTO event_tokens (event_id, token, status) VALUES (:event_id, :token, :status)", entities)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (r *TokenRepository) GetByToken(ctx context.Context, token string) (*model.EventToken, error) <span class="cov0" title="0">{
+        var eventToken entity.EventToken
+        err := r.db.GetContext(ctx, &amp;eventToken, "SELECT event_id, token, status, holder_id, locked_until, created_at, updated_at FROM event_tokens WHERE token = ?", token)
+        return entity.ConvertEventTokenToModel(eventToken), err
+}</span>
+
+func (r *TokenRepository) ReleaseToken(ctx context.Context, eventToken *model.EventToken) error <span class="cov0" title="0">{
+        entityToken := entity.ConvertEventTokenToEntity(*eventToken)
+        _, err := r.db.NamedExecContext(ctx, `
+                UPDATE event_tokens SET locked_until = NULL, status = :status, holder_id = NULL, updated_at = CURRENT_TIMESTAMP 
+                WHERE token = :token`, map[string]interface{}{
+                "token":  entityToken.Token,
+                "status": string(model.TokenStatusActive),
+        })
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (r *TokenRepository) ReleaseTokensByTx(ctx context.Context, tx postgresql.ExecerContext, tokens []string) error <span class="cov0" title="0">{
+        _, err := tx.NamedExecContext(ctx, `
+                UPDATE event_tokens SET locked_until = NULL, status = :status, holder_id = NULL, updated_at = CURRENT_TIMESTAMP 
+                WHERE token = ANY(:tokens)`, map[string]interface{}{
+                "tokens": pq.Array(tokens),
+                "status": string(model.TokenStatusActive),
+        })
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+func (r *TokenRepository) ConfirmUsedToken(ctx context.Context, token *model.ConfirmingToken) error <span class="cov0" title="0">{
+        return r.ConfirmUsedTokenByTx(ctx, r.db, token)
+}</span>
+
+func (r *TokenRepository) ConfirmUsedTokenByTx(ctx context.Context, tx postgresql.ExecerContext, token *model.ConfirmingToken) error <span class="cov0" title="0">{
+        _, err := tx.NamedExecContext(ctx, "UPDATE event_tokens SET status = :status, holder_id = :holder_id, updated_at = CURRENT_TIMESTAMP WHERE token = :token", map[string]interface{}{
+                "token":     token.Token,
+                "status":    string(model.TokenStatusUsed),
+                "holder_id": token.HolderID,
+        })
+        return err
+}</span>
+
+func (r *TokenRepository) ConfirmUsedTokensByTx(ctx context.Context, tx postgresql.ExecerContext, tokens []model.ConfirmingToken) error <span class="cov0" title="0">{
+        if len(tokens) == 0 </span><span class="cov0" title="0">{
+                return nil
+        }</span>
+        <span class="cov0" title="0">_, err := tx.NamedExecContext(ctx, "UPDATE event_tokens SET status = :status, holder_id = :holder_id, updated_at = CURRENT_TIMESTAMP WHERE token = ANY(:tokens)", map[string]interface{}{
+                "tokens":    pq.Array(tokens),
+                "status":    string(model.TokenStatusUsed),
+                "holder_id": tokens[0].HolderID,
+        })
+        return err</span>
+}
+
+func (r *TokenRepository) SelectAvailableToken(ctx context.Context, holderID int32, eventID int, quantity int) ([]string, error) <span class="cov0" title="0">{
+        var tokens []string
+        tx, err := r.db.BeginTxx(ctx, nil)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">rows, err := tx.QueryxContext(ctx, "SELECT token FROM event_tokens WHERE event_id = $1 AND status = $2 AND (locked_until IS NULL OR (locked_until IS NOT NULL AND locked_until &lt; CURRENT_TIMESTAMP)) LIMIT $3 FOR UPDATE SKIP LOCKED", eventID, string(model.TokenStatusActive), quantity)
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">defer rows.Close()
+        for rows.Next() </span><span class="cov0" title="0">{
+                var token string
+                err := rows.Scan(&amp;token)
+                if err != nil </span><span class="cov0" title="0">{
+                        tx.Rollback()
+                        return nil, err
+                }</span>
+                <span class="cov0" title="0">tokens = append(tokens, token)</span>
+        }
+
+        <span class="cov0" title="0">_, err = tx.NamedExecContext(ctx, "UPDATE event_tokens SET locked_until = :locked_until, holder_id = :holder_id, status = :new_status, updated_at = CURRENT_TIMESTAMP WHERE token = ANY(:tokens)", map[string]interface{}{
+                "tokens":       pq.Array(tokens),
+                "new_status":   string(model.TokenStatusLocked),
+                "locked_until": sql.NullTime{Time: time.Now().Add(r.config.LockedDuration), Valid: true},
+                "holder_id":    holderID,
+        })
+        if err != nil </span><span class="cov0" title="0">{
+                tx.Rollback()
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">err = tx.Commit()
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">return tokens, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file34" style="display: none">//go:generate mockgen -source=bookingservice.go -destination=bookingservice_mock.go -package=services
+package services
+
+import (
+        "context"
+        "errors"
+        "log"
+        "time"
+
+        "booking-event/internal/infra/paymentgateway"
+        "booking-event/internal/modules/booking/model"
+)
+
+type BookingRepository interface {
+        CreateBooking(ctx context.Context, booking *model.Booking, bookingItems []model.BookingItem) error
+        CountBookingByUserID(ctx context.Context, eventID int, userID int) (int, error)
+        GetBookingByID(ctx context.Context, id int) (*model.Booking, error)
+        ConfirmBooking(ctx context.Context, booking *model.Booking, event *model.Event, bookingItems []model.BookingItem) error
+        CancelBooking(ctx context.Context, bookingID int) error
+}
+
+type BookingItemRepository interface {
+        GetBookingItemsByBookingID(ctx context.Context, bookingID int) ([]model.BookingItem, error)
+        CreateBookingItems(ctx context.Context, bookingItems []model.BookingItem) error
+}
+
+type EventServiceForBooking interface {
+        GetEventByID(ctx context.Context, id int) (*model.Event, error)
+}
+
+type BookingEventTokenService interface {
+        SelectAvailableToken(ctx context.Context, holderID int32, eventID int, quantity int) ([]string, error)
+}
+
+type BookingConfig struct {
+        MaxBookingPerUser int
+}
+
+type BookingService struct {
+        eventService      EventServiceForBooking
+        eventTokenService BookingEventTokenService
+
+        bookingRepository     BookingRepository
+        bookingItemRepository BookingItemRepository
+        cfg                   BookingConfig
+}
+
+func NewBookingService(
+        eventService EventServiceForBooking,
+        eventTokenService BookingEventTokenService,
+        bookingRepo BookingRepository,
+        bookingItemRepo BookingItemRepository,
+        paymentService paymentgateway.PaymentGateway,
+        cfg BookingConfig,
+) *BookingService <span class="cov8" title="1">{
+        return &amp;BookingService{
+                eventService:          eventService,
+                eventTokenService:     eventTokenService,
+                bookingRepository:     bookingRepo,
+                bookingItemRepository: bookingItemRepo,
+                cfg:                   cfg,
+        }
+}</span>
+
+func (s *BookingService) CreateBooking(ctx context.Context, booking model.CreateBookingRequest) (*model.Booking, error) <span class="cov8" title="1">{
+        event, err := s.eventService.GetEventByID(ctx, booking.EventID)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">if event.Status != model.EventStatusActive </span><span class="cov8" title="1">{
+                return nil, errors.New("event is not active")
+        }</span>
+
+        <span class="cov8" title="1">count, err := s.bookingRepository.CountBookingByUserID(ctx, booking.EventID, booking.UserID)
+        if err != nil </span><span class="cov0" title="0">{
+                log.Println("error counting booking by user id", err)
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">if count &gt;= s.cfg.MaxBookingPerUser </span><span class="cov8" title="1">{
+                return nil, errors.New("max booking per user reached")
+        }</span>
+
+        <span class="cov8" title="1">tokens, err := s.eventTokenService.SelectAvailableToken(ctx, int32(booking.UserID), booking.EventID, booking.Quantity)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">if len(tokens) == 0 </span><span class="cov0" title="0">{
+                return nil, errors.New("no available token")
+        }</span>
+
+        <span class="cov8" title="1">bookingModel := &amp;model.Booking{
+                Status:          model.BookingStatusPending,
+                UserID:          booking.UserID,
+                EventID:         booking.EventID,
+                InitialQuantity: booking.Quantity,
+                Quantity:        len(tokens),
+        }
+        bookingItems := make([]model.BookingItem, len(tokens))
+        for i, token := range tokens </span><span class="cov8" title="1">{
+                bookingItems[i] = model.BookingItem{
+                        BookingID: bookingModel.ID,
+                        Token:     token,
+                }
+        }</span>
+
+        <span class="cov8" title="1">err = s.bookingRepository.CreateBooking(ctx, bookingModel, bookingItems)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov8" title="1">return bookingModel, nil</span>
+}
+
+func (s *BookingService) ConfirmBooking(ctx context.Context, userID int, bookingID int) error <span class="cov8" title="1">{
+        booking, err := s.bookingRepository.GetBookingByID(ctx, bookingID)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">if booking.Status != model.BookingStatusPending </span><span class="cov0" title="0">{
+                return errors.New("booking is not pending")
+        }</span>
+
+        <span class="cov8" title="1">if booking.UserID != userID </span><span class="cov8" title="1">{
+                return errors.New("unauthorized user is not allowed to confirm this booking")
+        }</span>
+
+        <span class="cov8" title="1">event, err := s.eventService.GetEventByID(ctx, booking.EventID)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">booking.Status = model.BookingStatusConfirmed
+
+        bookingItems, err := s.bookingItemRepository.GetBookingItemsByBookingID(ctx, booking.ID)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">return s.bookingRepository.ConfirmBooking(ctx, booking, event, bookingItems)</span>
+}
+
+func (s *BookingService) GetBookingByID(ctx context.Context, id int) (*model.Booking, error) <span class="cov0" title="0">{
+        return s.bookingRepository.GetBookingByID(ctx, id)
+}</span>
+
+func (s *BookingService) CancelBooking(ctx context.Context, id int, executorID int) error <span class="cov8" title="1">{
+        booking, err := s.bookingRepository.GetBookingByID(ctx, id)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov8" title="1">if booking.UserID != executorID </span><span class="cov8" title="1">{
+                return errors.New("unauthorized user is not allowed to cancel this booking")
+        }</span>
+        <span class="cov8" title="1">if booking.Status == model.BookingStatusCanceled </span><span class="cov8" title="1">{
+                return errors.New("booking is already canceled")
+        }</span>
+
+        <span class="cov8" title="1">event, err := s.eventService.GetEventByID(ctx, booking.EventID)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov8" title="1">if event.StartAt.Before(time.Now()) </span><span class="cov8" title="1">{ // CANNOT CANCEL EVENT THAT HAS ALREADY STARTED
+                return errors.New("event is already started")
+        }</span>
+
+        <span class="cov8" title="1">return s.bookingRepository.CancelBooking(ctx, booking.ID)</span>
+}
+</pre>
+		
+		<pre class="file" id="file35" style="display: none">// Code generated by MockGen. DO NOT EDIT.
+// Source: bookingservice.go
+//
+// Generated by this command:
+//
+//        mockgen -source=bookingservice.go -destination=bookingservice_mock.go -package=services
+//
+
+// Package services is a generated GoMock package.
+package services
+
+import (
+        model "booking-event/internal/modules/booking/model"
+        context "context"
+        reflect "reflect"
+
+        gomock "go.uber.org/mock/gomock"
+)
+
+// MockBookingRepository is a mock of BookingRepository interface.
+type MockBookingRepository struct {
+        ctrl     *gomock.Controller
+        recorder *MockBookingRepositoryMockRecorder
+}
+
+// MockBookingRepositoryMockRecorder is the mock recorder for MockBookingRepository.
+type MockBookingRepositoryMockRecorder struct {
+        mock *MockBookingRepository
+}
+
+// NewMockBookingRepository creates a new mock instance.
+func NewMockBookingRepository(ctrl *gomock.Controller) *MockBookingRepository <span class="cov8" title="1">{
+        mock := &amp;MockBookingRepository{ctrl: ctrl}
+        mock.recorder = &amp;MockBookingRepositoryMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockBookingRepository) EXPECT() *MockBookingRepositoryMockRecorder <span class="cov8" title="1">{
+        return m.recorder
+}</span>
+
+// CancelBooking mocks base method.
+func (m *MockBookingRepository) CancelBooking(ctx context.Context, bookingID int) error <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CancelBooking", ctx, bookingID)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// CancelBooking indicates an expected call of CancelBooking.
+func (mr *MockBookingRepositoryMockRecorder) CancelBooking(ctx, bookingID any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CancelBooking", reflect.TypeOf((*MockBookingRepository)(nil).CancelBooking), ctx, bookingID)
+}</span>
+
+// ConfirmBooking mocks base method.
+func (m *MockBookingRepository) ConfirmBooking(ctx context.Context, booking *model.Booking, event *model.Event, bookingItems []model.BookingItem) error <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "ConfirmBooking", ctx, booking, event, bookingItems)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// ConfirmBooking indicates an expected call of ConfirmBooking.
+func (mr *MockBookingRepositoryMockRecorder) ConfirmBooking(ctx, booking, event, bookingItems any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ConfirmBooking", reflect.TypeOf((*MockBookingRepository)(nil).ConfirmBooking), ctx, booking, event, bookingItems)
+}</span>
+
+// CountBookingByUserID mocks base method.
+func (m *MockBookingRepository) CountBookingByUserID(ctx context.Context, eventID, userID int) (int, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CountBookingByUserID", ctx, eventID, userID)
+        ret0, _ := ret[0].(int)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// CountBookingByUserID indicates an expected call of CountBookingByUserID.
+func (mr *MockBookingRepositoryMockRecorder) CountBookingByUserID(ctx, eventID, userID any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CountBookingByUserID", reflect.TypeOf((*MockBookingRepository)(nil).CountBookingByUserID), ctx, eventID, userID)
+}</span>
+
+// CreateBooking mocks base method.
+func (m *MockBookingRepository) CreateBooking(ctx context.Context, booking *model.Booking, bookingItems []model.BookingItem) error <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CreateBooking", ctx, booking, bookingItems)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// CreateBooking indicates an expected call of CreateBooking.
+func (mr *MockBookingRepositoryMockRecorder) CreateBooking(ctx, booking, bookingItems any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateBooking", reflect.TypeOf((*MockBookingRepository)(nil).CreateBooking), ctx, booking, bookingItems)
+}</span>
+
+// GetBookingByID mocks base method.
+func (m *MockBookingRepository) GetBookingByID(ctx context.Context, id int) (*model.Booking, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "GetBookingByID", ctx, id)
+        ret0, _ := ret[0].(*model.Booking)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// GetBookingByID indicates an expected call of GetBookingByID.
+func (mr *MockBookingRepositoryMockRecorder) GetBookingByID(ctx, id any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBookingByID", reflect.TypeOf((*MockBookingRepository)(nil).GetBookingByID), ctx, id)
+}</span>
+
+// MockBookingItemRepository is a mock of BookingItemRepository interface.
+type MockBookingItemRepository struct {
+        ctrl     *gomock.Controller
+        recorder *MockBookingItemRepositoryMockRecorder
+}
+
+// MockBookingItemRepositoryMockRecorder is the mock recorder for MockBookingItemRepository.
+type MockBookingItemRepositoryMockRecorder struct {
+        mock *MockBookingItemRepository
+}
+
+// NewMockBookingItemRepository creates a new mock instance.
+func NewMockBookingItemRepository(ctrl *gomock.Controller) *MockBookingItemRepository <span class="cov8" title="1">{
+        mock := &amp;MockBookingItemRepository{ctrl: ctrl}
+        mock.recorder = &amp;MockBookingItemRepositoryMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockBookingItemRepository) EXPECT() *MockBookingItemRepositoryMockRecorder <span class="cov8" title="1">{
+        return m.recorder
+}</span>
+
+// CreateBookingItems mocks base method.
+func (m *MockBookingItemRepository) CreateBookingItems(ctx context.Context, bookingItems []model.BookingItem) error <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CreateBookingItems", ctx, bookingItems)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// CreateBookingItems indicates an expected call of CreateBookingItems.
+func (mr *MockBookingItemRepositoryMockRecorder) CreateBookingItems(ctx, bookingItems any) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateBookingItems", reflect.TypeOf((*MockBookingItemRepository)(nil).CreateBookingItems), ctx, bookingItems)
+}</span>
+
+// GetBookingItemsByBookingID mocks base method.
+func (m *MockBookingItemRepository) GetBookingItemsByBookingID(ctx context.Context, bookingID int) ([]model.BookingItem, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "GetBookingItemsByBookingID", ctx, bookingID)
+        ret0, _ := ret[0].([]model.BookingItem)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// GetBookingItemsByBookingID indicates an expected call of GetBookingItemsByBookingID.
+func (mr *MockBookingItemRepositoryMockRecorder) GetBookingItemsByBookingID(ctx, bookingID any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBookingItemsByBookingID", reflect.TypeOf((*MockBookingItemRepository)(nil).GetBookingItemsByBookingID), ctx, bookingID)
+}</span>
+
+// MockEventServiceForBooking is a mock of EventServiceForBooking interface.
+type MockEventServiceForBooking struct {
+        ctrl     *gomock.Controller
+        recorder *MockEventServiceForBookingMockRecorder
+}
+
+// MockEventServiceForBookingMockRecorder is the mock recorder for MockEventServiceForBooking.
+type MockEventServiceForBookingMockRecorder struct {
+        mock *MockEventServiceForBooking
+}
+
+// NewMockEventServiceForBooking creates a new mock instance.
+func NewMockEventServiceForBooking(ctrl *gomock.Controller) *MockEventServiceForBooking <span class="cov8" title="1">{
+        mock := &amp;MockEventServiceForBooking{ctrl: ctrl}
+        mock.recorder = &amp;MockEventServiceForBookingMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockEventServiceForBooking) EXPECT() *MockEventServiceForBookingMockRecorder <span class="cov8" title="1">{
+        return m.recorder
+}</span>
+
+// GetEventByID mocks base method.
+func (m *MockEventServiceForBooking) GetEventByID(ctx context.Context, id int) (*model.Event, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "GetEventByID", ctx, id)
+        ret0, _ := ret[0].(*model.Event)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// GetEventByID indicates an expected call of GetEventByID.
+func (mr *MockEventServiceForBookingMockRecorder) GetEventByID(ctx, id any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEventByID", reflect.TypeOf((*MockEventServiceForBooking)(nil).GetEventByID), ctx, id)
+}</span>
+
+// MockBookingEventTokenService is a mock of BookingEventTokenService interface.
+type MockBookingEventTokenService struct {
+        ctrl     *gomock.Controller
+        recorder *MockBookingEventTokenServiceMockRecorder
+}
+
+// MockBookingEventTokenServiceMockRecorder is the mock recorder for MockBookingEventTokenService.
+type MockBookingEventTokenServiceMockRecorder struct {
+        mock *MockBookingEventTokenService
+}
+
+// NewMockBookingEventTokenService creates a new mock instance.
+func NewMockBookingEventTokenService(ctrl *gomock.Controller) *MockBookingEventTokenService <span class="cov8" title="1">{
+        mock := &amp;MockBookingEventTokenService{ctrl: ctrl}
+        mock.recorder = &amp;MockBookingEventTokenServiceMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockBookingEventTokenService) EXPECT() *MockBookingEventTokenServiceMockRecorder <span class="cov8" title="1">{
+        return m.recorder
+}</span>
+
+// SelectAvailableToken mocks base method.
+func (m *MockBookingEventTokenService) SelectAvailableToken(ctx context.Context, holderID int32, eventID, quantity int) ([]string, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "SelectAvailableToken", ctx, holderID, eventID, quantity)
+        ret0, _ := ret[0].([]string)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// SelectAvailableToken indicates an expected call of SelectAvailableToken.
+func (mr *MockBookingEventTokenServiceMockRecorder) SelectAvailableToken(ctx, holderID, eventID, quantity any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SelectAvailableToken", reflect.TypeOf((*MockBookingEventTokenService)(nil).SelectAvailableToken), ctx, holderID, eventID, quantity)
+}</span>
+</pre>
+		
+		<pre class="file" id="file36" style="display: none">package services
+
+import (
+        "booking-event/internal/modules/booking/model"
+        "context"
+)
+
+type EmailService struct {
+        eventRepo   EventRepository
+        bookingRepo BookingRepository
+        emailClient BookingEmailRepository
+}
+
+type BookingEmailRepository interface {
+        SendReminderEmail(ctx context.Context, task model.SendReminderEmailTask) error
+        SendConfirmationEmail(ctx context.Context, task model.SendConfirmationEmailTask) error
+}
+
+func NewEmailService(bookingRepo BookingRepository, emailClient BookingEmailRepository) *EmailService <span class="cov0" title="0">{
+        return &amp;EmailService{bookingRepo: bookingRepo, emailClient: emailClient}
+}</span>
+
+func (s *EmailService) SendReminderEmail(ctx context.Context, task model.SendReminderEmailTask) error <span class="cov0" title="0">{
+        return s.emailClient.SendReminderEmail(ctx, task)
+}</span>
+
+func (s *EmailService) SendConfirmationEmail(ctx context.Context, task model.SendConfirmationEmailTask) error <span class="cov0" title="0">{
+        return s.emailClient.SendConfirmationEmail(ctx, task)
+}</span>
+</pre>
+		
+		<pre class="file" id="file37" style="display: none">//go:generate mockgen -source=eventservice.go -destination=eventservice_mock.go -package=services
+package services
+
+import (
+        "context"
+        "errors"
+
+        "github.com/Rhymond/go-money"
+
+        "booking-event/internal/modules/booking/model"
+)
+
+type EventRepository interface {
+        GetEventByID(ctx context.Context, id int) (*model.Event, error)
+        QueryEvents(ctx context.Context, query model.EventQuery) ([]model.Event, error)
+        CreateEvent(ctx context.Context, event model.Event, tokens []model.EventToken) error
+        UpdateEvent(ctx context.Context, event model.Event) error
+}
+
+type EventTokenServiceForEvent interface {
+        CreateEventToken(ctx context.Context, eventID int, userID int) (string, error)
+}
+
+type EventService struct {
+        eventRepo EventRepository
+        currency  string
+        uuidFn    func() string
+}
+
+func NewEventService(eventRepo EventRepository, currency string, uuidFn func() string) *EventService <span class="cov0" title="0">{
+        return &amp;EventService{eventRepo: eventRepo, currency: currency, uuidFn: uuidFn}
+}</span>
+
+func (s *EventService) RetrieveEventDetail(ctx context.Context, eventID int) (*model.Event, error) <span class="cov0" title="0">{
+        event, err := s.eventRepo.GetEventByID(ctx, eventID)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return event, nil</span>
+}
+
+func (s *EventService) QueryEvents(ctx context.Context, query model.EventQuery) ([]model.Event, error) <span class="cov0" title="0">{
+        events, err := s.eventRepo.QueryEvents(ctx, query)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return events, nil</span>
+}
+
+func (s *EventService) CreateEvent(ctx context.Context, params model.CreateEventRequest) error <span class="cov0" title="0">{
+        m := money.NewFromFloat(params.Price, s.currency)
+        event := model.Event{
+                Name:           params.Name,
+                AvailableSeats: params.AvailableSeats,
+                StartAt:        params.StartAt,
+                Location:       params.Location,
+                Category:       params.Category,
+                Status:         model.EventStatusInactive,
+                Currency:       s.currency,
+                Price:          m.Amount(),
+                CreatorID:      params.ExecutorID,
+        }
+        tokens := make([]model.EventToken, params.AvailableSeats)
+        for i := 0; i &lt; params.AvailableSeats; i++ </span><span class="cov0" title="0">{
+                tokens[i] = model.EventToken{EventID: event.ID, Token: s.uuidFn(), Status: model.TokenStatusActive}
+        }</span>
+        <span class="cov0" title="0">return s.eventRepo.CreateEvent(ctx, event, tokens)</span>
+}
+
+func (s *EventService) UpdateEvent(ctx context.Context, params model.UpdateEventRequest) error <span class="cov0" title="0">{
+        event, err := s.eventRepo.GetEventByID(ctx, params.EventID)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov0" title="0">if event.CreatorID != params.ExecutorID </span><span class="cov0" title="0">{
+                return errors.New("unauthorized to update this event")
+        }</span>
+        <span class="cov0" title="0">event.Status = params.Status
+        return s.eventRepo.UpdateEvent(ctx, *event)</span>
+}
+</pre>
+		
+		<pre class="file" id="file38" style="display: none">// Code generated by MockGen. DO NOT EDIT.
+// Source: eventservice.go
+//
+// Generated by this command:
+//
+//        mockgen -source=eventservice.go -destination=eventservice_mock.go -package=services
+//
+
+// Package services is a generated GoMock package.
+package services
+
+import (
+        model "booking-event/internal/modules/booking/model"
+        context "context"
+        reflect "reflect"
+
+        gomock "go.uber.org/mock/gomock"
+)
+
+// MockEventRepository is a mock of EventRepository interface.
+type MockEventRepository struct {
+        ctrl     *gomock.Controller
+        recorder *MockEventRepositoryMockRecorder
+}
+
+// MockEventRepositoryMockRecorder is the mock recorder for MockEventRepository.
+type MockEventRepositoryMockRecorder struct {
+        mock *MockEventRepository
+}
+
+// NewMockEventRepository creates a new mock instance.
+func NewMockEventRepository(ctrl *gomock.Controller) *MockEventRepository <span class="cov0" title="0">{
+        mock := &amp;MockEventRepository{ctrl: ctrl}
+        mock.recorder = &amp;MockEventRepositoryMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockEventRepository) EXPECT() *MockEventRepositoryMockRecorder <span class="cov0" title="0">{
+        return m.recorder
+}</span>
+
+// CreateEvent mocks base method.
+func (m *MockEventRepository) CreateEvent(ctx context.Context, event model.Event, tokens []model.EventToken) error <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CreateEvent", ctx, event, tokens)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// CreateEvent indicates an expected call of CreateEvent.
+func (mr *MockEventRepositoryMockRecorder) CreateEvent(ctx, event, tokens any) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateEvent", reflect.TypeOf((*MockEventRepository)(nil).CreateEvent), ctx, event, tokens)
+}</span>
+
+// GetEventByID mocks base method.
+func (m *MockEventRepository) GetEventByID(ctx context.Context, id int) (*model.Event, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "GetEventByID", ctx, id)
+        ret0, _ := ret[0].(*model.Event)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// GetEventByID indicates an expected call of GetEventByID.
+func (mr *MockEventRepositoryMockRecorder) GetEventByID(ctx, id any) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEventByID", reflect.TypeOf((*MockEventRepository)(nil).GetEventByID), ctx, id)
+}</span>
+
+// QueryEvents mocks base method.
+func (m *MockEventRepository) QueryEvents(ctx context.Context, query model.EventQuery) ([]model.Event, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "QueryEvents", ctx, query)
+        ret0, _ := ret[0].([]model.Event)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// QueryEvents indicates an expected call of QueryEvents.
+func (mr *MockEventRepositoryMockRecorder) QueryEvents(ctx, query any) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "QueryEvents", reflect.TypeOf((*MockEventRepository)(nil).QueryEvents), ctx, query)
+}</span>
+
+// UpdateEvent mocks base method.
+func (m *MockEventRepository) UpdateEvent(ctx context.Context, event model.Event) error <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "UpdateEvent", ctx, event)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// UpdateEvent indicates an expected call of UpdateEvent.
+func (mr *MockEventRepositoryMockRecorder) UpdateEvent(ctx, event any) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateEvent", reflect.TypeOf((*MockEventRepository)(nil).UpdateEvent), ctx, event)
+}</span>
+
+// MockEventTokenServiceForEvent is a mock of EventTokenServiceForEvent interface.
+type MockEventTokenServiceForEvent struct {
+        ctrl     *gomock.Controller
+        recorder *MockEventTokenServiceForEventMockRecorder
+}
+
+// MockEventTokenServiceForEventMockRecorder is the mock recorder for MockEventTokenServiceForEvent.
+type MockEventTokenServiceForEventMockRecorder struct {
+        mock *MockEventTokenServiceForEvent
+}
+
+// NewMockEventTokenServiceForEvent creates a new mock instance.
+func NewMockEventTokenServiceForEvent(ctrl *gomock.Controller) *MockEventTokenServiceForEvent <span class="cov0" title="0">{
+        mock := &amp;MockEventTokenServiceForEvent{ctrl: ctrl}
+        mock.recorder = &amp;MockEventTokenServiceForEventMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockEventTokenServiceForEvent) EXPECT() *MockEventTokenServiceForEventMockRecorder <span class="cov0" title="0">{
+        return m.recorder
+}</span>
+
+// CreateEventToken mocks base method.
+func (m *MockEventTokenServiceForEvent) CreateEventToken(ctx context.Context, eventID, userID int) (string, error) <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CreateEventToken", ctx, eventID, userID)
+        ret0, _ := ret[0].(string)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// CreateEventToken indicates an expected call of CreateEventToken.
+func (mr *MockEventTokenServiceForEventMockRecorder) CreateEventToken(ctx, eventID, userID any) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateEventToken", reflect.TypeOf((*MockEventTokenServiceForEvent)(nil).CreateEventToken), ctx, eventID, userID)
+}</span>
+</pre>
+		
+		<pre class="file" id="file39" style="display: none">//go:generate mockgen -source=tokenservice.go -destination=tokenservice_mock.go -package=services
+package services
+
+import (
+        "context"
+        "fmt"
+
+        "booking-event/internal/modules/booking/model"
+)
+
+type TokenRepository interface {
+        CreateTokens(ctx context.Context, tokens []model.EventToken) error
+        SelectAvailableToken(ctx context.Context, holderID int32, eventID int, quantity int) ([]string, error)
+        ReleaseToken(ctx context.Context, eventToken *model.EventToken) error
+        GetByToken(ctx context.Context, token string) (*model.EventToken, error)
+}
+
+type EventTokenService struct {
+        tokenRepo TokenRepository
+        uuidFn    func() string
+}
+
+func NewEventTokenService(tokenRepo TokenRepository, uuidFn func() string) *EventTokenService <span class="cov8" title="1">{
+        return &amp;EventTokenService{tokenRepo: tokenRepo, uuidFn: uuidFn}
+}</span>
+
+func (s *EventTokenService) ReleaseToken(ctx context.Context, token string) error <span class="cov8" title="1">{
+        eventToken, err := s.tokenRepo.GetByToken(ctx, token)
+        if err != nil </span><span class="cov8" title="1">{
+                return fmt.Errorf("token not found")
+        }</span>
+
+        <span class="cov8" title="1">return s.tokenRepo.ReleaseToken(ctx, eventToken)</span>
+}
+
+func (s *EventTokenService) SelectAvailableToken(ctx context.Context, holderID int32, eventID int, quantity int) ([]string, error) <span class="cov8" title="1">{
+        tokens, err := s.tokenRepo.SelectAvailableToken(ctx, holderID, eventID, quantity)
+        if err != nil </span><span class="cov8" title="1">{
+                return nil, err
+        }</span>
+        <span class="cov8" title="1">return tokens, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file40" style="display: none">// Code generated by MockGen. DO NOT EDIT.
+// Source: tokenservice.go
+//
+// Generated by this command:
+//
+//        mockgen -source=tokenservice.go -destination=tokenservice_mock.go -package=services
+//
+
+// Package services is a generated GoMock package.
+package services
+
+import (
+        model "booking-event/internal/modules/booking/model"
+        context "context"
+        reflect "reflect"
+
+        gomock "go.uber.org/mock/gomock"
+)
+
+// MockTokenRepository is a mock of TokenRepository interface.
+type MockTokenRepository struct {
+        ctrl     *gomock.Controller
+        recorder *MockTokenRepositoryMockRecorder
+}
+
+// MockTokenRepositoryMockRecorder is the mock recorder for MockTokenRepository.
+type MockTokenRepositoryMockRecorder struct {
+        mock *MockTokenRepository
+}
+
+// NewMockTokenRepository creates a new mock instance.
+func NewMockTokenRepository(ctrl *gomock.Controller) *MockTokenRepository <span class="cov8" title="1">{
+        mock := &amp;MockTokenRepository{ctrl: ctrl}
+        mock.recorder = &amp;MockTokenRepositoryMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockTokenRepository) EXPECT() *MockTokenRepositoryMockRecorder <span class="cov8" title="1">{
+        return m.recorder
+}</span>
+
+// CreateTokens mocks base method.
+func (m *MockTokenRepository) CreateTokens(ctx context.Context, tokens []model.EventToken) error <span class="cov0" title="0">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CreateTokens", ctx, tokens)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// CreateTokens indicates an expected call of CreateTokens.
+func (mr *MockTokenRepositoryMockRecorder) CreateTokens(ctx, tokens any) *gomock.Call <span class="cov0" title="0">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateTokens", reflect.TypeOf((*MockTokenRepository)(nil).CreateTokens), ctx, tokens)
+}</span>
+
+// GetByToken mocks base method.
+func (m *MockTokenRepository) GetByToken(ctx context.Context, token string) (*model.EventToken, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "GetByToken", ctx, token)
+        ret0, _ := ret[0].(*model.EventToken)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// GetByToken indicates an expected call of GetByToken.
+func (mr *MockTokenRepositoryMockRecorder) GetByToken(ctx, token any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetByToken", reflect.TypeOf((*MockTokenRepository)(nil).GetByToken), ctx, token)
+}</span>
+
+// ReleaseToken mocks base method.
+func (m *MockTokenRepository) ReleaseToken(ctx context.Context, eventToken *model.EventToken) error <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "ReleaseToken", ctx, eventToken)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// ReleaseToken indicates an expected call of ReleaseToken.
+func (mr *MockTokenRepositoryMockRecorder) ReleaseToken(ctx, eventToken any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReleaseToken", reflect.TypeOf((*MockTokenRepository)(nil).ReleaseToken), ctx, eventToken)
+}</span>
+
+// SelectAvailableToken mocks base method.
+func (m *MockTokenRepository) SelectAvailableToken(ctx context.Context, holderID int32, eventID, quantity int) ([]string, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "SelectAvailableToken", ctx, holderID, eventID, quantity)
+        ret0, _ := ret[0].([]string)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// SelectAvailableToken indicates an expected call of SelectAvailableToken.
+func (mr *MockTokenRepositoryMockRecorder) SelectAvailableToken(ctx, holderID, eventID, quantity any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SelectAvailableToken", reflect.TypeOf((*MockTokenRepository)(nil).SelectAvailableToken), ctx, holderID, eventID, quantity)
+}</span>
+</pre>
+		
+		<pre class="file" id="file41" style="display: none">package asyntask
+
+import (
+        "booking-event/internal/modules/booking/model"
+        "context"
+        "encoding/json"
+
+        "github.com/hibiken/asynq"
+)
+
+type EmailService interface {
+        SendReminderEmail(ctx context.Context, task model.SendReminderEmailTask) error
+        SendConfirmationEmail(ctx context.Context, task model.SendConfirmationEmailTask) error
+}
+
+type EmailTaskHandler struct {
+        emailService EmailService
+}
+
+func NewEmailTaskHandler(emailService EmailService) *EmailTaskHandler <span class="cov0" title="0">{
+        return &amp;EmailTaskHandler{emailService: emailService}
+}</span>
+
+func (h *EmailTaskHandler) HandleReminderEmail(ctx context.Context, t *asynq.Task) error <span class="cov0" title="0">{
+        var task model.SendReminderEmailTask
+        if err := json.Unmarshal(t.Payload(), &amp;task); err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov0" title="0">return h.emailService.SendReminderEmail(ctx, task)</span>
+}
+
+func (h *EmailTaskHandler) HandleConfirmationEmail(ctx context.Context, t *asynq.Task) error <span class="cov0" title="0">{
+        var task model.SendConfirmationEmailTask
+        if err := json.Unmarshal(t.Payload(), &amp;task); err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+        <span class="cov0" title="0">return h.emailService.SendConfirmationEmail(ctx, task)</span>
+}
+
+func (h *EmailTaskHandler) Register(mux *asynq.ServeMux) <span class="cov0" title="0">{
+        mux.HandleFunc(string(model.TaskTypeSendReminderEmail), h.HandleReminderEmail)
+        mux.HandleFunc(string(model.TaskTypeSendConfirmationEmail), h.HandleConfirmationEmail)
+}</span>
+</pre>
+		
+		<pre class="file" id="file42" style="display: none">//go:generate mockgen -source=booking.go -destination=booking_mock.go -package=transporthttp
+package transporthttp
+
+import (
+        "context"
+        "net/http"
+
+        "github.com/gin-gonic/gin"
+
+        "booking-event/internal/common/handler"
+        commonmodel "booking-event/internal/common/model"
+        "booking-event/internal/common/util"
+        "booking-event/internal/modules/booking/model"
+)
+
+type BookingHandler interface {
+        CreateBooking(ctx context.Context, booking model.CreateBookingRequest) (*model.Booking, error)
+        ConfirmBooking(ctx context.Context, userID int, bookingID int) error
+        CancelBooking(ctx context.Context, id int, executorID int) error
+        GetBookingByID(ctx context.Context, id int) (*model.Booking, error)
+}
+
+type BookingHttpHandler struct {
+        bookingService BookingHandler
+}
+
+func NewBookingHandler(bookingService BookingHandler) handler.HttpHandler <span class="cov8" title="1">{
+        return &amp;BookingHttpHandler{bookingService: bookingService}
+}</span>
+
+func (h *BookingHttpHandler) RegisterRoutes(router *gin.RouterGroup) <span class="cov0" title="0">{
+        router.POST("/bookings", h.CreateBooking)
+        router.PUT("/bookings/:booking_id/confirm", h.ConfirmBooking)
+        router.PUT("/bookings/:booking_id/cancel", h.CancelBooking)
+        router.GET("/bookings/:booking_id", h.GetBookingByID)
+}</span>
+
+func (h *BookingHttpHandler) CreateBooking(c *gin.Context) <span class="cov8" title="1">{
+        var booking model.CreateBookingRequest
+        if err := c.ShouldBindJSON(&amp;booking); err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">booking.UserID = util.GetUserIDContext(c.Request.Context())
+        resp, err := h.bookingService.CreateBooking(c.Request.Context(), booking)
+        if err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusInternalServerError, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">c.JSON(http.StatusOK, commonmodel.Response{
+                Success: true,
+                Message: "booking created",
+                Data:    resp,
+        })</span>
+}
+
+func (h *BookingHttpHandler) ConfirmBooking(c *gin.Context) <span class="cov8" title="1">{
+        var request model.ConfirmBookingRequest
+        if err := c.ShouldBindUri(&amp;request); err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">userID := util.GetUserIDContext(c.Request.Context())
+        err := h.bookingService.ConfirmBooking(c.Request.Context(), userID, request.BookingID)
+        if err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusInternalServerError, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">c.JSON(http.StatusOK, commonmodel.Response{
+                Success: true,
+                Message: "booking confirmed",
+        })</span>
+}
+
+func (h *BookingHttpHandler) CancelBooking(c *gin.Context) <span class="cov8" title="1">{
+        var request model.CancelBookingRequest
+        if err := c.ShouldBindUri(&amp;request); err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">userID := util.GetUserIDContext(c.Request.Context())
+        err := h.bookingService.CancelBooking(c.Request.Context(), request.BookingID, userID)
+        if err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusInternalServerError, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">c.JSON(http.StatusOK, commonmodel.Response{
+                Success: true,
+                Message: "booking canceled",
+        })</span>
+}
+
+func (h *BookingHttpHandler) GetBookingByID(c *gin.Context) <span class="cov8" title="1">{
+        var request model.GetBookingByIDRequest
+        if err := c.ShouldBindUri(&amp;request); err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">booking, err := h.bookingService.GetBookingByID(c.Request.Context(), request.BookingID)
+        if err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusInternalServerError, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">c.JSON(http.StatusOK, commonmodel.Response{
+                Success: true,
+                Data:    booking,
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file43" style="display: none">// Code generated by MockGen. DO NOT EDIT.
+// Source: booking.go
+//
+// Generated by this command:
+//
+//        mockgen -source=booking.go -destination=booking_mock.go -package=transporthttp
+//
+
+// Package transporthttp is a generated GoMock package.
+package transporthttp
+
+import (
+        model "booking-event/internal/modules/booking/model"
+        context "context"
+        reflect "reflect"
+
+        gomock "go.uber.org/mock/gomock"
+)
+
+// MockBookingHandler is a mock of BookingHandler interface.
+type MockBookingHandler struct {
+        ctrl     *gomock.Controller
+        recorder *MockBookingHandlerMockRecorder
+}
+
+// MockBookingHandlerMockRecorder is the mock recorder for MockBookingHandler.
+type MockBookingHandlerMockRecorder struct {
+        mock *MockBookingHandler
+}
+
+// NewMockBookingHandler creates a new mock instance.
+func NewMockBookingHandler(ctrl *gomock.Controller) *MockBookingHandler <span class="cov8" title="1">{
+        mock := &amp;MockBookingHandler{ctrl: ctrl}
+        mock.recorder = &amp;MockBookingHandlerMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockBookingHandler) EXPECT() *MockBookingHandlerMockRecorder <span class="cov8" title="1">{
+        return m.recorder
+}</span>
+
+// CancelBooking mocks base method.
+func (m *MockBookingHandler) CancelBooking(ctx context.Context, id, executorID int) error <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CancelBooking", ctx, id, executorID)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// CancelBooking indicates an expected call of CancelBooking.
+func (mr *MockBookingHandlerMockRecorder) CancelBooking(ctx, id, executorID any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CancelBooking", reflect.TypeOf((*MockBookingHandler)(nil).CancelBooking), ctx, id, executorID)
+}</span>
+
+// ConfirmBooking mocks base method.
+func (m *MockBookingHandler) ConfirmBooking(ctx context.Context, userID, bookingID int) error <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "ConfirmBooking", ctx, userID, bookingID)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// ConfirmBooking indicates an expected call of ConfirmBooking.
+func (mr *MockBookingHandlerMockRecorder) ConfirmBooking(ctx, userID, bookingID any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ConfirmBooking", reflect.TypeOf((*MockBookingHandler)(nil).ConfirmBooking), ctx, userID, bookingID)
+}</span>
+
+// CreateBooking mocks base method.
+func (m *MockBookingHandler) CreateBooking(ctx context.Context, booking model.CreateBookingRequest) (*model.Booking, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CreateBooking", ctx, booking)
+        ret0, _ := ret[0].(*model.Booking)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// CreateBooking indicates an expected call of CreateBooking.
+func (mr *MockBookingHandlerMockRecorder) CreateBooking(ctx, booking any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateBooking", reflect.TypeOf((*MockBookingHandler)(nil).CreateBooking), ctx, booking)
+}</span>
+
+// GetBookingByID mocks base method.
+func (m *MockBookingHandler) GetBookingByID(ctx context.Context, id int) (*model.Booking, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "GetBookingByID", ctx, id)
+        ret0, _ := ret[0].(*model.Booking)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// GetBookingByID indicates an expected call of GetBookingByID.
+func (mr *MockBookingHandlerMockRecorder) GetBookingByID(ctx, id any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBookingByID", reflect.TypeOf((*MockBookingHandler)(nil).GetBookingByID), ctx, id)
+}</span>
+</pre>
+		
+		<pre class="file" id="file44" style="display: none">//go:generate mockgen -source=event.go -destination=event_mock.go -package=transporthttp
+package transporthttp
+
+import (
+        "context"
+        "errors"
+        "net/http"
+        "strconv"
+
+        "github.com/gin-gonic/gin"
+
+        _errors "booking-event/internal/common/errors"
+        "booking-event/internal/common/handler"
+        commonmodel "booking-event/internal/common/model"
+        "booking-event/internal/common/util"
+        "booking-event/internal/modules/booking/model"
+)
+
+type EventHandler interface {
+        RetrieveEventDetail(ctx context.Context, eventID int) (*model.Event, error)
+        QueryEvents(ctx context.Context, query model.EventQuery) ([]model.Event, error)
+        CreateEvent(ctx context.Context, params model.CreateEventRequest) error
+        UpdateEvent(ctx context.Context, params model.UpdateEventRequest) error
+}
+
+type EventHttpHandler struct {
+        eventService EventHandler
+}
+
+func NewEventHandler(eventService EventHandler) handler.HttpHandler <span class="cov8" title="1">{
+        return &amp;EventHttpHandler{eventService: eventService}
+}</span>
+
+func (h *EventHttpHandler) RetrieveEventDetail(c *gin.Context) <span class="cov8" title="1">{
+        var request model.RetrieveEventDetailRequest
+        if err := c.ShouldBindUri(&amp;request); err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">event, err := h.eventService.RetrieveEventDetail(c.Request.Context(), request.EventID)
+        if errors.Is(err, _errors.ErrNotFound) </span><span class="cov0" title="0">{
+                c.JSON(http.StatusNotFound, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">if err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusInternalServerError, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">c.JSON(http.StatusOK, commonmodel.Response{
+                Success: true,
+                Data:    event,
+                Message: "event retrieved",
+        })</span>
+}
+
+func (h *EventHttpHandler) QueryEvents(c *gin.Context) <span class="cov8" title="1">{
+        var query model.EventQuery
+        if err := c.ShouldBindJSON(&amp;query); err != nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">if query.StartFrom.After(query.StartTo) &amp;&amp; !query.StartTo.IsZero() </span><span class="cov0" title="0">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: "start_from must be before start_to",
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">events, err := h.eventService.QueryEvents(c.Request.Context(), query)
+        if err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusInternalServerError, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">c.JSON(http.StatusOK, commonmodel.Response{
+                Success: true,
+                Data:    events,
+                Message: "events retrieved",
+        })</span>
+}
+
+func (h *EventHttpHandler) CreateEvent(c *gin.Context) <span class="cov8" title="1">{
+        var request model.CreateEventRequest
+        if err := c.ShouldBindJSON(&amp;request); err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+
+        <span class="cov8" title="1">request.ExecutorID = util.GetUserIDContext(c.Request.Context())
+
+        err := h.eventService.CreateEvent(c.Request.Context(), request)
+        if err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusInternalServerError, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">c.JSON(http.StatusOK, commonmodel.Response{
+                Success: true,
+                Message: "Event created successfully",
+        })</span>
+}
+
+func (h *EventHttpHandler) UpdateEvent(c *gin.Context) <span class="cov8" title="1">{
+        var request model.UpdateEventRequest
+        if err := c.ShouldBindJSON(&amp;request); err != nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">var err error
+        request.EventID, err = strconv.Atoi(c.Param("event_id"))
+        if err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusBadRequest, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">request.ExecutorID = util.GetUserIDContext(c.Request.Context())
+
+        err = h.eventService.UpdateEvent(c.Request.Context(), request)
+        if err != nil </span><span class="cov8" title="1">{
+                c.JSON(http.StatusInternalServerError, commonmodel.Response{
+                        Success: false,
+                        Data:    nil,
+                        Message: err.Error(),
+                })
+                return
+        }</span>
+        <span class="cov8" title="1">c.JSON(http.StatusOK, commonmodel.Response{
+                Success: true,
+                Message: "Event updated successfully",
+        })</span>
+}
+
+func (h *EventHttpHandler) RegisterRoutes(router *gin.RouterGroup) <span class="cov0" title="0">{
+        router.GET("/events/:event_id", h.RetrieveEventDetail)
+        router.POST("/search/events", h.QueryEvents)
+        router.POST("/events", h.CreateEvent)
+        router.PUT("/events/:event_id", h.UpdateEvent)
+}</span>
+</pre>
+		
+		<pre class="file" id="file45" style="display: none">// Code generated by MockGen. DO NOT EDIT.
+// Source: event.go
+//
+// Generated by this command:
+//
+//        mockgen -source=event.go -destination=event_mock.go -package=transporthttp
+//
+
+// Package transporthttp is a generated GoMock package.
+package transporthttp
+
+import (
+        model "booking-event/internal/modules/booking/model"
+        context "context"
+        reflect "reflect"
+
+        gomock "go.uber.org/mock/gomock"
+)
+
+// MockEventHandler is a mock of EventHandler interface.
+type MockEventHandler struct {
+        ctrl     *gomock.Controller
+        recorder *MockEventHandlerMockRecorder
+}
+
+// MockEventHandlerMockRecorder is the mock recorder for MockEventHandler.
+type MockEventHandlerMockRecorder struct {
+        mock *MockEventHandler
+}
+
+// NewMockEventHandler creates a new mock instance.
+func NewMockEventHandler(ctrl *gomock.Controller) *MockEventHandler <span class="cov8" title="1">{
+        mock := &amp;MockEventHandler{ctrl: ctrl}
+        mock.recorder = &amp;MockEventHandlerMockRecorder{mock}
+        return mock
+}</span>
+
+// EXPECT returns an object that allows the caller to indicate expected use.
+func (m *MockEventHandler) EXPECT() *MockEventHandlerMockRecorder <span class="cov8" title="1">{
+        return m.recorder
+}</span>
+
+// CreateEvent mocks base method.
+func (m *MockEventHandler) CreateEvent(ctx context.Context, params model.CreateEventRequest) error <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "CreateEvent", ctx, params)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// CreateEvent indicates an expected call of CreateEvent.
+func (mr *MockEventHandlerMockRecorder) CreateEvent(ctx, params any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateEvent", reflect.TypeOf((*MockEventHandler)(nil).CreateEvent), ctx, params)
+}</span>
+
+// QueryEvents mocks base method.
+func (m *MockEventHandler) QueryEvents(ctx context.Context, query model.EventQuery) ([]model.Event, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "QueryEvents", ctx, query)
+        ret0, _ := ret[0].([]model.Event)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// QueryEvents indicates an expected call of QueryEvents.
+func (mr *MockEventHandlerMockRecorder) QueryEvents(ctx, query any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "QueryEvents", reflect.TypeOf((*MockEventHandler)(nil).QueryEvents), ctx, query)
+}</span>
+
+// RetrieveEventDetail mocks base method.
+func (m *MockEventHandler) RetrieveEventDetail(ctx context.Context, eventID int) (*model.Event, error) <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "RetrieveEventDetail", ctx, eventID)
+        ret0, _ := ret[0].(*model.Event)
+        ret1, _ := ret[1].(error)
+        return ret0, ret1
+}</span>
+
+// RetrieveEventDetail indicates an expected call of RetrieveEventDetail.
+func (mr *MockEventHandlerMockRecorder) RetrieveEventDetail(ctx, eventID any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RetrieveEventDetail", reflect.TypeOf((*MockEventHandler)(nil).RetrieveEventDetail), ctx, eventID)
+}</span>
+
+// UpdateEvent mocks base method.
+func (m *MockEventHandler) UpdateEvent(ctx context.Context, params model.UpdateEventRequest) error <span class="cov8" title="1">{
+        m.ctrl.T.Helper()
+        ret := m.ctrl.Call(m, "UpdateEvent", ctx, params)
+        ret0, _ := ret[0].(error)
+        return ret0
+}</span>
+
+// UpdateEvent indicates an expected call of UpdateEvent.
+func (mr *MockEventHandlerMockRecorder) UpdateEvent(ctx, params any) *gomock.Call <span class="cov8" title="1">{
+        mr.mock.ctrl.T.Helper()
+        return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateEvent", reflect.TypeOf((*MockEventHandler)(nil).UpdateEvent), ctx, params)
+}</span>
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

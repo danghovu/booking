@@ -1,0 +1,39 @@
+server:
+  port: "5000"
+
+postgres:
+  host: "postgres"
+  port: 5432
+  user: "postgres"
+  password: "root"
+  db_name: "booking"
+  ssl_mode: "disable"
+  open_conn: 10
+  idle_conn: 5
+
+redis:
+  host: "redis"
+  port: 6379
+  password: ""
+
+token:
+  locked_duration: "10m"
+
+jwt:
+  secret_key: "secret_key"
+  access_token_exp: "15m"
+  refresh_token_exp: "24h"
+
+booking:
+  max_booking_per_user: 10
+
+supporting_money:
+  currency: "USD"
+
+graceful_shutdown: 10s
+
+asynq:
+  concurrency: 10
+  queues:
+    default: 5
+    high_priority: 5
