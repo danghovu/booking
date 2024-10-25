@@ -65,7 +65,7 @@ func (c *BookingRepository) CreateBooking(ctx context.Context, booking *model.Bo
 		RETURNING id
 	`, entityBooking.UserID, entityBooking.EventID, entityBooking.Status, entityBooking.InitialQuantity, entityBooking.Quantity).Scan(&booking.ID)
 	if err != nil {
-		tx.Rollback()
+		_ = tx.Rollback()
 		return err
 	}
 
@@ -75,7 +75,7 @@ func (c *BookingRepository) CreateBooking(ctx context.Context, booking *model.Bo
 
 	err = c.bookingItemRepo.CreateBookingItemsTx(ctx, tx, bookingItems)
 	if err != nil {
-		tx.Rollback()
+		_ = tx.Rollback()
 		return err
 	}
 
@@ -106,7 +106,7 @@ func (c *BookingRepository) ConfirmBooking(ctx context.Context, booking *model.B
 
 	_, err = tx.ExecContext(ctx, "UPDATE bookings SET status = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2", string(model.BookingStatusConfirmed), booking.ID)
 	if err != nil {
-		tx.Rollback()
+		_ = tx.Rollback()
 		return err
 	}
 
@@ -117,7 +117,7 @@ func (c *BookingRepository) ConfirmBooking(ctx context.Context, booking *model.B
 
 	err = c.tokenRepo.ConfirmUsedTokensByTx(ctx, tx, tokens)
 	if err != nil {
-		tx.Rollback()
+		_ = tx.Rollback()
 		return err
 	}
 
@@ -130,7 +130,7 @@ func (c *BookingRepository) ConfirmBooking(ctx context.Context, booking *model.B
 
 	err = c.paymentClient.CreatePayment(ctx, payment)
 	if err != nil {
-		tx.Rollback()
+		_ = tx.Rollback()
 		return err
 	}
 
@@ -160,7 +160,7 @@ func (c *BookingRepository) CancelBooking(ctx context.Context, bookingID int) er
 		"status": string(model.BookingStatusCanceled),
 	})
 	if err != nil {
-		tx.Rollback()
+		_ = tx.Rollback()
 		return err
 	}
 
@@ -171,7 +171,7 @@ func (c *BookingRepository) CancelBooking(ctx context.Context, bookingID int) er
 
 	err = c.tokenRepo.ReleaseTokensByTx(ctx, tx, bookingItemsTokens)
 	if err != nil {
-		tx.Rollback()
+		_ = tx.Rollback()
 		return err
 	}
 

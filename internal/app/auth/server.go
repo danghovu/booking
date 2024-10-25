@@ -59,7 +59,9 @@ func (s *Server) Run() error {
 
 func (s *Server) Shutdown(ctx context.Context) error {
 	if s.server != nil {
-		s.server.Shutdown(ctx)
+		if err := s.server.Shutdown(ctx); err != nil && err != http.ErrServerClosed {
+			return err
+		}
 	}
 
 	if err := s.appContext.InfraRegistry().DB().Close(); err != nil {

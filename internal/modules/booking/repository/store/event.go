@@ -42,8 +42,7 @@ func (r *EventRepository) CreateEvent(ctx context.Context, event model.Event, to
 		entityEvent.CreatorID,
 		entityEvent.Status).Scan(&entityEvent.ID)
 	if err != nil {
-		tx.Rollback()
-		return err
+		return tx.Rollback()
 	}
 
 	for i := range tokens {
@@ -51,8 +50,7 @@ func (r *EventRepository) CreateEvent(ctx context.Context, event model.Event, to
 	}
 	err = r.tokenRepo.CreateTokensTX(ctx, tx, tokens)
 	if err != nil {
-		tx.Rollback()
-		return err
+		return tx.Rollback()
 	}
 	return tx.Commit()
 }

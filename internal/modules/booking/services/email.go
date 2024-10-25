@@ -6,7 +6,6 @@ import (
 )
 
 type EmailService struct {
-	eventRepo   EventRepository
 	bookingRepo BookingRepository
 	emailClient BookingEmailRepository
 }

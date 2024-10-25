@@ -33,7 +33,9 @@ func main() {
 	done := make(chan struct{})
 	go func() {
 		defer close(done)
-		server.Shutdown(context.Background())
+		if err := server.Shutdown(context.Background()); err != nil {
+			log.Fatalf("Failed to shutdown server: %v", err)
+		}
 	}()
 
 	select {

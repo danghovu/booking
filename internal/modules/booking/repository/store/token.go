@@ -22,10 +22,6 @@ type TokenRepository struct {
 	config TokenConfig
 }
 
-const (
-	tokenKey = "event:token:%d"
-)
-
 func NewTokenRepository(
 	db *sqlx.DB,
 	config TokenConfig,
@@ -119,7 +115,9 @@ func (r *TokenRepository) SelectAvailableToken(ctx context.Context, holderID int
 
 	rows, err := tx.QueryxContext(ctx, "SELECT token FROM event_tokens WHERE event_id = $1 AND status = $2 AND (locked_until IS NULL OR (locked_until IS NOT NULL AND locked_until < CURRENT_TIMESTAMP)) LIMIT $3 FOR UPDATE SKIP LOCKED", eventID, string(model.TokenStatusActive), quantity)
 	if err != nil {
-		tx.Rollback()
+		if err := tx.Rollback(); err != nil {
+			return nil, err
+		}
 		return nil, err
 	}
 	defer rows.Close()
@@ -127,7 +125,9 @@ func (r *TokenRepository) SelectAvailableToken(ctx context.Context, holderID int
 		var token string
 		err := rows.Scan(&token)
 		if err != nil {
-			tx.Rollback()
+			if err := tx.Rollback(); err != nil {
+				return nil, err
+			}
 			return nil, err
 		}
 		tokens = append(tokens, token)
@@ -140,7 +140,9 @@ func (r *TokenRepository) SelectAvailableToken(ctx context.Context, holderID int
 		"holder_id":    holderID,
 	})
 	if err != nil {
-		tx.Rollback()
+		if err := tx.Rollback(); err != nil {
+			return nil, err
+		}
 		return nil, err
 	}
 
